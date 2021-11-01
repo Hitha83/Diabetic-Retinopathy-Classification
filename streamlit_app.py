@@ -1,5 +1,5 @@
 import streamlit as st
-import as tensorflow as tf
+import tensorflow as tf
 st.set_option("deprecation.showfileUploaderEncoding",False)
 @st.cache(allow_output_mutation=True)
 def load_model():
