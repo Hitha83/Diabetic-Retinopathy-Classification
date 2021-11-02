@@ -3,7 +3,7 @@ import tensorflow as tf
 st.set_option("deprecation.showfileUploaderEncoding",False)
 @st.cache(allow_output_mutation=True)
 def load_model():
-  model = tf.keras.models.load_model('/content/gdrive/MyDrive/DR_model/best_model')
+  model = tf.keras.models.load_model('/best_model')
   return model
 model = load_model()
 st.write("""
@@ -19,7 +19,7 @@ def import_and_predict(image_data, model):
   image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
   img = np.asarray(image)
   img_reshape = img[np.newaxis,...]
-  img_proc = preprocess_input(Xtrain)
+  img_proc = preprocess_input(img_reshape)
   prediction = model.predict(img_proc)
   return prediction
 if file is None:
