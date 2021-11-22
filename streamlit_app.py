@@ -72,8 +72,8 @@ def crop_image_from_gray(image,tol=7):
             
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
-    #image = cv2.imread('file_uploaded')
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = cv2.imread('file_uploaded')
+    #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = crop_image_from_gray(image)
     image = cv2.resize(image, (128, 128))
     image=cv2.GaussianBlur( image , (5,5) ,0)
