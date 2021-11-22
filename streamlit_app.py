@@ -48,30 +48,12 @@ def main():
                 #scores = scores.numpy()
                 #data = predict_on_image_set(scores)        
                 #st.dataframe(data)
-                
-def crop_image_from_gray(image,tol=7):
-    
-    if image.ndim==3:
-        gray_img = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-        mask = gray_img>tol
-        
-        check_shape = image[:,:,0][np.ix_(mask.any(1),mask.any(0))].shape[0]
-        if (check_shape == 0): # image is too dark so that we crop out everything,
-            return image # return original image
-        else:
-            img1=image[:,:,0][np.ix_(mask.any(1),mask.any(0))]
-            img2=image[:,:,1][np.ix_(mask.any(1),mask.any(0))]
-            img3=image[:,:,2][np.ix_(mask.any(1),mask.any(0))]
-    #print(img1.shape,img2.shape,img3.shape)
-            image = np.stack([img1,img2,img3],axis=-1)
-    #print(image.shape)
-        return image
+               
                 
             
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
     #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image = crop_image_from_gray(image)
     image = cv2.resize(image, (128, 128))
     image=cv2.GaussianBlur( image , (5,5) ,0)
     image = np.array(image, dtype="float") / 255.0
