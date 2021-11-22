@@ -47,8 +47,9 @@ def main():
                 plt.imshow(image)
                 plt.axis("off")
                 label = import_and_predict(image)
+                result = np.argmax[class_names(label)]
                 st.success('Classified')
-                st.write(label)
+                st.write(result)
         
                 
                 #scores = tf.nn.softmax(predictions[0])
@@ -67,9 +68,7 @@ def import_and_predict(image):
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat = model.predict(image)
-    class_names = {0 : "No DR", 1 :"Mild", 2 : "Moderate", 3 : "Severe", 4 : "Proliferative DR"}
-    result = np.argmax[class_names(label)]
-    return result
+    return yhat
 
 
 if __name__ == '__main__':
