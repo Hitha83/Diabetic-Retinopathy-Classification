@@ -47,7 +47,7 @@ def main():
                 plt.imshow(image)
                 plt.axis("off")
                 label = import_and_predict(image)
-                result = np.argmax[class_names(label)]
+                result = np.argmax(label)
                 st.success('Classified')
                 st.write(result)
         
