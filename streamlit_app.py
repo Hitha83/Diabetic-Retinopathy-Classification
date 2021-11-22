@@ -2,7 +2,6 @@
 
 import streamlit as st
 import tensorflow as tf
-import tensorflow_hub as hub
 # Packages required for Image Classification
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
