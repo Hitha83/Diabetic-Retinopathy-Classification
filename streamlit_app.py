@@ -23,8 +23,8 @@ st.markdown("A simple web application for grading severity of diabetic retinopat
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     if file_uploaded is not None:
-        image2 = Image.open(file_uploaded)
-        st.image(image2, caption='Uploaded Image', use_column_width=True)
+        image = load_img(file_uploaded)
+        st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
         st.success("File saved")
