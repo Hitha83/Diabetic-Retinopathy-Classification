@@ -5,6 +5,7 @@ from PIL import Image
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+from keras.preprocessing.image import load_img
 from tensorflow.keras.models import load_model
 from tensorflow.keras.activations import softmax
 import os
