@@ -39,9 +39,15 @@ def main():
                 plt.imshow(image2)
                 plt.axis("off")
                 result = import_and_predict(image)
-                #st.write('%s (%.2f%%)' % (label[1], label[2]*100))
-                st.success('Classified')
-                st.write(result)
+		class_names = {0: "No DR",
+            		1:"Mild",
+            		2:"Moderate",
+            		3:"Severe",
+            		4:"Proliferative DR"}
+		
+                string  = "This image belongs to "+ class_names[np.argmax(result)]
+                st.success('string')
+                #st.write(result)
         
                 
                 #scores = tf.nn.softmax(predictions[0])
@@ -59,15 +65,8 @@ def import_and_predict(image):
     image=cv2.GaussianBlur( image , (5,5) ,0)
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
-    score = model.predict(image)
-    class_names = {0: "No DR",
-            1:"Mild",
-            2:"Moderate",
-            3:"Severe",
-            4:"Proliferative DR"}
-    
-    result = (class_names[np.argmax(score)],100 * np.max(score).round(2))
-    return result 
+    prediction = model.predict(image)
+    return prediction
 
 
 if __name__ == '__main__':
