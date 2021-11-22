@@ -41,7 +41,7 @@ def main():
                 prediction = import_and_predict(image)
         scores  = np.argmax(prediction)
     	
-    	st.write(scores)
+    	
 	    
                 #scores = tf.nn.softmax(predictions[0])
                 #scores = scores.numpy()
