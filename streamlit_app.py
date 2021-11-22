@@ -4,7 +4,7 @@ import streamlit as st
 import tensorflow as tf
 from keras.applications.vgg16 import VGG16
 from PIL import Image
-import cv2
+from .cv2 import *
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
