@@ -23,7 +23,7 @@ st.markdown("A simple web application for grading severity of diabetic retinopat
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     if file_uploaded is not None:
-        image = load_img(file_uploaded)
+        image = load_img(file_uploaded,(128,128))
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
@@ -52,9 +52,9 @@ def main():
             
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
-    image = load_img(file_uploaded)
+    image = load_img(file_uploaded,(128,128))
     #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image = Image.resize(128, 128)
+    #image = Image.resize(128, 128)
     image=cv2.GaussianBlur( image , (5,5) ,0)
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
