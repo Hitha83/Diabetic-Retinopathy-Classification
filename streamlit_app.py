@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 import tensorflow as tf
 from keras.applications.vgg16 import VGG16
@@ -15,7 +13,7 @@ from  matplotlib import pyplot as plt
 fig = plt.figure()
 
 with open("custom.css") as f:
-  st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 st.header("Diabetic Retinopathy Grade Classifier")
 
@@ -39,8 +37,8 @@ def main():
                 plt.imshow(image2)
                 plt.axis("off")
                 
-		#class_names = {0: "No DR", 1: "Mild", 2: "Moderate", 3: "Severe", 4: "Proliferative DR"}
-		result = import_and_predict(image)
+		        class_names = {0: "No DR", 1: "Mild", 2: "Moderate", 3: "Severe", 4: "Proliferative DR"}
+		        result = import_and_predict(image)
 		
                 string  = "This image belongs to "+ np.argmax(result)
                 st.success('Classified')
