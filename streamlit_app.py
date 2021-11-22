@@ -39,7 +39,7 @@ def main():
                 plt.axis("off")
                 
 class_names = {0: "No DR", 1: "Mild", 2: "Moderate", 3: "Severe", 4: "ProliferativeDR"}
-result = import_and_predict(image)
+result = import_and_predict(image,model)
 		
 string  = "This image belongs to "+ np.argmax[class_names(result)]
 st.success('Classified')
@@ -52,7 +52,7 @@ st.write(string)
                
                 
             
-def import_and_predict(image):
+def import_and_predict(image,model):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
     image = load_img(file_uploaded)
     #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
