@@ -39,7 +39,7 @@ def main():
                 plt.imshow(image2)
                 plt.axis("off")
                 prediction = import_and_predict(image)
-	scores  = np.argmax(prediction)
+   scores  = np.argmax(prediction)
     		st.success('Classified')
     		st.write(scores)
 	    
