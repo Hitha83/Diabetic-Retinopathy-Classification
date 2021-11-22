@@ -43,7 +43,7 @@ def main():
 
 		
     string  = "This image belongs to "+ np.argmax[class_names(prediction)]
-st.success('Classified')
+    st.success('Classified')
     st.write(string)
 	    
                 #scores = tf.nn.softmax(predictions[0])
