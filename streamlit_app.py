@@ -39,10 +39,10 @@ def main():
                 plt.imshow(image2)
                 plt.axis("off")
                 prediction = import_and_predict(image)
-class_names = {0: "No DR", 1: "Mild", 2: "Moderate", 3: "Severe", 4: "ProliferativeDR"}
+
 
 		
-string  = "This image belongs to "+ np.argmax[class_names(prediction)]
+		string  = "This image belongs to "+ np.argmax[class_names(prediction)]
 st.success('Classified')
 st.write(string)
 	    
