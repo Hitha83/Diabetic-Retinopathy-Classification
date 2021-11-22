@@ -51,11 +51,7 @@ def main():
         st.success('Classified')
         st.write(label)
         
-                
-                #scores = tf.nn.softmax(predictions[0])
-                #scores = scores.numpy()
-                #data = predict_on_image_set(scores)        
-                #st.dataframe(data)
+              
                 
 def crop_image_from_gray(image,tol=7):
     if image.ndim ==2:
@@ -77,26 +73,13 @@ def crop_image_from_gray(image,tol=7):
     #print(image.shape)
         return image
                 
-                
-def load_ben_color(trainDir, sigmaX=10):
-  data = []
-  images = os.listdir(trainDir)
-  #print("Number of files in new_dataset is " + str(len(images)))
-  for imagefilename in images:
-    imagefullpath = os.path.join(os.path.sep,trainDir,imagefilename)
-    image = cv2.imread(imagefullpath)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image = cv2.resize(image, (IMG_SIZE, IMG_SIZE))
-    image=cv2.GaussianBlur( image , (5,5) ,0)
-    image = np.array(image, dtype="float") / 255.0
-    data.append(np.array(image))    
-  return data   
+               
                 
             
 def import_and_predict(image):
 
-  model = classifier_model = tf.keras.models.load_model(r'/content/gdrive/MyDrive/DR_MODEL/DR3000-60.h5')
-  image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+  model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
+  
   image = cv2.resize(image, (128, 128))
   image=cv2.GaussianBlur( image , (5,5) ,0)
   image = np.array(image, dtype="float") / 255.0
