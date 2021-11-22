@@ -40,8 +40,8 @@ def main():
                 plt.axis("off")
                 prediction = import_and_predict(image)
         scores  = np.argmax(prediction)
-    		st.success('Classified')
-    		st.write(scores)
+    	st.success('Classified')
+    	st.write(scores)
 	    
                 #scores = tf.nn.softmax(predictions[0])
                 #scores = scores.numpy()
