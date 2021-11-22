@@ -47,7 +47,8 @@ def main():
                 plt.imshow(image)
                 plt.axis("off")
                 label = import_and_predict(image)
-                result = np.argmax(label)
+		class_names = {0 = "No DR", 1 :"Mild", 2 = "Moderate", 3 = "Severe", 4 = "Proliferative DR"}
+                result = np.argmax[class_names(label)]
                 st.success('Classified')
                 st.write(result)
         
