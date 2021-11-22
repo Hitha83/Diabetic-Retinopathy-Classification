@@ -38,7 +38,7 @@ def main():
             with st.spinner('Model working....'):
                 plt.imshow(image)
                 plt.axis("off")
-                result = import_and_predict(image,file_uploaded)
+                result = import_and_predict(image)
                 #st.write('%s (%.2f%%)' % (label[1], label[2]*100))
                 st.success('Classified')
                 st.write(result)
