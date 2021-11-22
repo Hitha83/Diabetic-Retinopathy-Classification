@@ -50,10 +50,8 @@ def main():
                 #st.dataframe(data)
                 
 def crop_image_from_gray(image,tol=7):
-    if image.ndim ==2:
-        mask = image>tol
-        return image[np.ix_(mask.any(1),mask.any(0))]
-    elif image.ndim==3:
+    
+    if image.ndim==3:
         gray_img = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
         mask = gray_img>tol
         
@@ -70,9 +68,8 @@ def crop_image_from_gray(image,tol=7):
         return image
                 
             
-def import_and_predict(image,file_uploaded):
+def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
-    image = Image.open(file_uploaded)
     #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = crop_image_from_gray(image)
     image = cv2.resize(image, (128, 128))
