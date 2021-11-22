@@ -39,7 +39,7 @@ def main():
                 plt.imshow(image)
                 plt.axis("off")
                 label = import_and_predict(image)
-                st.write('%s (%.2f%%)' % (label[1], label[2]*100))
+                #st.write('%s (%.2f%%)' % (label[1], label[2]*100))
                 st.success('Classified')
                 st.write(label)
         
