@@ -35,7 +35,7 @@ def main():
   if file_uploaded is not None:
     image = Image.open(file_uploaded)
     st.image(image, caption='Uploaded Image', use_column_width=True)
-    with open(os.path.join("tempDir",file_uploaded.name),"wb")as f:
+    with open(os.path.join(".",file_uploaded.name),"wb")as f:
       f.write(file_uploaded.getbuffer())
     st.success("File saved")
         
