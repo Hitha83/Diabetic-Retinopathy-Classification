@@ -39,12 +39,9 @@ def main():
                 plt.imshow(image2)
                 plt.axis("off")
                 prediction = import_and_predict(image)
-
-
-		
-    string  = "This image belongs to "+ np.argmax(prediction)
-    st.success('Classified')
-    st.write(string)
+		scores  = np.argmax(prediction)
+    		st.success('Classified')
+    		st.write(scores)
 	    
                 #scores = tf.nn.softmax(predictions[0])
                 #scores = scores.numpy()
