@@ -5,4 +5,5 @@ numpy>=1.18.5
 opencv-python-headless
 Pillow>=7.1.2
 matplotlib
+cv2
 
