@@ -9,12 +9,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 from tensorflow.keras.activations import softmax
-from keras.applications.vgg16 import preprocess_input
 import os
 import h5py
-import random
 from  matplotlib import pyplot as plt
-import matplotlib.image as mpimg
 fig = plt.figure()
 
 with open("custom.css") as f:
