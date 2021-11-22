@@ -47,9 +47,9 @@ def main():
                 plt.imshow(image)
                 plt.axis("off")
                 label = import_and_predict(image)
-                st.write('%s (%.2f%%)' % (label[1], label[2]*100))
+                result = np.argmax(label)
                 st.success('Classified')
-                st.write(label)
+                st.write(result)
         
                 
                 #scores = tf.nn.softmax(predictions[0])
