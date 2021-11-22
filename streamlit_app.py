@@ -68,11 +68,7 @@ def import_and_predict(image):
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat = model.predict(image)
-    # convert the probabilities to class labels
-    label = decode_predictions(yhat)
-    # retrieve the most likely result, e.g. highest probability
-    label = label[0][0]
-    return label 
+    return yhat 
 
 
 if __name__ == '__main__':
