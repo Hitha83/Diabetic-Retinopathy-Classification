@@ -42,7 +42,7 @@ def main():
 
 
 		
-    string  = "This image belongs to "+ np.argmax[class_names(prediction)]
+    string  = "This image belongs to "+ np.argmax(prediction)
     st.success('Classified')
     st.write(string)
 	    
