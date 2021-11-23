@@ -33,14 +33,14 @@ image_names = []
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
-    #if 'key' not in st.session_state:
-    #	st.session_state['key'] = {}
+    #
+    #	
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
-            data_dict= st.session_state['key']
+            
             #image_names.append(file_uploaded.name)
             #st.session_state['key'] = image_names
         st.success("File saved")
@@ -61,12 +61,17 @@ def main():
                 scoreArr.append(result)
                 st.success('Classified')
                 st.write(result)
-                data_dict  = data_dict + {'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr} 
+                if 'key' not in st.session_state:
+                   st.session_state['key'] = {'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr}
+                else:
+                   data_dict= st.session_state['key']
+                   data_dict  = data_dict + {'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr} 
+                   st.session_state['key'] = data_dict
                 #d = {'image': [], 'results': []}
 
                 data = []
                 #st.dataframe(data)
-                st.session_state['key'] = data_dict
+                
                 for i in range(len(data_dict)):
                    data.append(data_dict[i])
                    st.write(data_dict[i]['image'])
