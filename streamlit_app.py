@@ -33,8 +33,8 @@ image_names = []
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
-    if 'key' not in st.session_state:
-    	st.session_state['key'] = {}
+    #if 'key' not in st.session_state:
+    #	st.session_state['key'] = {}
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         st.image(image, caption='Uploaded Image', use_column_width=True)
