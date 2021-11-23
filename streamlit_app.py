@@ -66,7 +66,7 @@ def main():
                 #st.dataframe(data)
                 st.session_state['key'] = data_dict
                 for i in range(len(data_dict)):
-                   st.write(data_dict[i])
+                   st.write(data_dict[i]['image'])
         
                 
                 #scores = tf.nn.softmax(predictions[0])
