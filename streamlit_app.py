@@ -57,8 +57,8 @@ def main():
                 scoreArr.append(result)
                 st.success('Classified')
                 st.write(result)
-                data = pd.dataFrame({'image':image_names, 'results':scores, 'maxScore' :scoreArr})
-                st.dataframe(data)
+                #data = pd.dataFrame({'image':image_names, 'results':scores, 'maxScore' :scoreArr})
+                #st.dataframe(data)
                 st.write(image_names)
         
                 
