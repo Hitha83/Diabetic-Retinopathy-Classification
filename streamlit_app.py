@@ -34,7 +34,7 @@ def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
     if 'key' not in st.session_state:
-    	st.session_state['key'] = []
+    	st.session_state['key'] = {}
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         st.image(image, caption='Uploaded Image', use_column_width=True)
@@ -61,7 +61,7 @@ def main():
                 scoreArr.append(result)
                 st.success('Classified')
                 st.write(result)
-                data_dict.append({'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr})
+                data_dict  = data_dict + {'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr} 
                 #d = {'image': [], 'results': []}
 
                 data = []
