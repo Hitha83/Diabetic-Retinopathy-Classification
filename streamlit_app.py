@@ -65,7 +65,7 @@ def main():
                 #data = pd.dataFrame()
                 #st.dataframe(data)
                 st.session_state['key'] = data_dict
-                st.write(st.session_state['key'])
+                st.write(st.session_state['key']['image'] +" with probability" + st.session_state['key']['results'])
         
                 
                 #scores = tf.nn.softmax(predictions[0])
