@@ -62,10 +62,11 @@ def main():
                 st.success('Classified')
                 st.write(result)
                 data_dict.append({'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr})
-                #data = pd.dataFrame()
+                data = pd.dataFrame()
                 #st.dataframe(data)
                 st.session_state['key'] = data_dict
                 for i in range(len(data_dict)):
+                   data.append(data_dict[i])
                    st.write(data_dict[i]['image'])
                    st.write(data_dict[i]['results'])
         
