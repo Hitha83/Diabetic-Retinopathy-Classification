@@ -40,9 +40,9 @@ def main():
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
-            image_names = st.session_state['key']
-            image_names.append(file_uploaded.name)
-            st.session_state['key'] = image_names
+            data_dict= st.session_state['key']
+            #image_names.append(file_uploaded.name)
+            #st.session_state['key'] = image_names
         st.success("File saved")
 
         
@@ -61,8 +61,10 @@ def main():
                 scoreArr.append(result)
                 st.success('Classified')
                 st.write(result)
-                #data = pd.dataFrame({'image':image_names, 'results':scores, 'maxScore' :scoreArr})
+                data_dict.append({'image':image_names, 'results':scores, 'maxScore' :scoreArr})
+                #data = pd.dataFrame()
                 #st.dataframe(data)
+                st.session_state['key'] = data_dict
                 st.write(st.session_state['key'])
         
                 
