@@ -40,7 +40,7 @@ def main():
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
-	    image_names = st.session_state['value']
+            image_names = st.session_state['key']
             image_names append(file_uploaded.name)
 	    st.session_state['key'] = image_names
         st.success("File saved")
