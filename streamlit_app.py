@@ -72,10 +72,9 @@ def main():
                 data = []
                 #st.dataframe(data)
                 
-                for i in range(len(data_dict)):
-                   data.append(data_dict[i])
-                   st.write(data_dict[i]['image'])
-                   st.write(data_dict[i]['results'])
+                
+                
+                st.write(st.session_state['key'])
                    #df = pd.DataFrame.from_dict(data)
                    #st.dataframe(df)
         
