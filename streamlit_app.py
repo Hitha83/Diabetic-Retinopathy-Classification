@@ -62,7 +62,7 @@ def main():
                 st.success('Classified')
                 st.write(result)
                 data_dict.append({'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr})
-		d = {'image': [], 'results': []}
+                d = {'image': [], 'results': []}
 
                 data = pd.dataFrame(data=d)
                 #st.dataframe(data)
