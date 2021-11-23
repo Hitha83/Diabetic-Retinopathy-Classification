@@ -29,11 +29,10 @@ with open("custom.css") as f:
 st.header("Diabetic Retinopathy Grade Classifier")
 
 st.markdown("A simple web application for grading severity of diabetic retinopathy . The presence of Diabetic retinopathy are classified into five different grades namely: 0 - No DR, 1 - Mild, 2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
-
+image_names = []
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
-    image_names = []
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         st.image(image, caption='Uploaded Image', use_column_width=True)
@@ -41,6 +40,7 @@ def main():
             f.write(file_uploaded.getbuffer())
             image_names.append(file_uploaded.name)
         st.success("File saved")
+
         
     if class_btn:
         if file_uploaded is None:
@@ -59,6 +59,7 @@ def main():
                 st.write(result)
                 data = pd.dataFrame({'image':image_names, 'results':scores, 'maxScore' :scoreArr})
                 st.dataframe(data)
+                st.write(image_names)
         
                 
                 #scores = tf.nn.softmax(predictions[0])
