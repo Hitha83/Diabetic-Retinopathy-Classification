@@ -65,7 +65,7 @@ def main():
                    st.session_state['key'] = {'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr}
                 else:
                    data_dict= st.session_state['key']
-                   data_dict  = data_dict + {'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr} 
+                   data_dict.update({'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr})
                    st.session_state['key'] = data_dict
                 #d = {'image': [], 'results': []}
 
