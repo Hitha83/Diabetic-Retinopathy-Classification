@@ -42,7 +42,7 @@ def main():
             f.write(file_uploaded.getbuffer())
             image_names = st.session_state['key']
             image_names.append(file_uploaded.name)
-	    st.session_state['key'] = image_names
+            st.session_state['key'] = image_names
         st.success("File saved")
 
         
