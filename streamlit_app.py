@@ -72,6 +72,7 @@ def main():
                    st.write(data_dict[i]['image'])
                    st.write(data_dict[i]['results'])
                    pd.DataFrame.from_dict(data)
+                   st.dataframe(data)
         
                 
                 #scores = tf.nn.softmax(predictions[0])
