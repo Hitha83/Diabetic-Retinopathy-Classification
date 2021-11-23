@@ -33,12 +33,16 @@ image_names = []
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
+    if 'key' not in st.session_state:
+    	st.session_state['key'] = []
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
-            image_names.append(file_uploaded.name)
+	    image_names = st.session_state['value']
+            image_names append(file_uploaded.name)
+	    st.session_state['key'] = image_names
         st.success("File saved")
 
         
@@ -59,7 +63,7 @@ def main():
                 st.write(result)
                 #data = pd.dataFrame({'image':image_names, 'results':scores, 'maxScore' :scoreArr})
                 #st.dataframe(data)
-                st.write(image_names)
+                st.write(st.session_state['key'])
         
                 
                 #scores = tf.nn.softmax(predictions[0])
