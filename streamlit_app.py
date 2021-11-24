@@ -34,18 +34,16 @@ st.sidebar.title('Navigation')
 page = st.sidebar.radio('What would you like to do', ['Predict the disease grade', 'Visualise the result'])
 
 if page == 'Predict the disease grade':
-    row0col1, row0col2 = st.columns([1, 5])
-    with row0col1:
-        st.image('download.jfif')
-    with row0col2:
-        st.title('Diabetic Retinopathy')
+    st.image('download.jfif')
+    st.title('Diabetic Retinopathy')
 
     # file = st.file_uploader('Insert Data')
     file = True
     if file:
+        main()
         df = pd.DataFrame(columns = ['image','results','maxScore'])
 
-        def main():
+def main():
             file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
             class_btn = st.button("Classify")	
             if file_uploaded is not None:
@@ -98,7 +96,7 @@ if page == 'Predict the disease grade':
                       #st.write('Map data')
        
 
-        def import_and_predict(image):
+def import_and_predict(image):
     
             model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
             new_size = (128,128)
@@ -109,8 +107,7 @@ if page == 'Predict the disease grade':
             yhat = model.predict(image)
             return yhat
 
-        if __name__ == '__main__':
-            main()
+
 
 
 
