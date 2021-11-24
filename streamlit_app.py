@@ -72,13 +72,13 @@ def main():
                 st.success('Classified')
                 st.write(result)
                 
-                if 'key' not in st.session_state:
-                   st.session_state['key'] = df
+                if 'a' not in st.session_state:
+                   st.session_state['a'] = df
                 else:
-                   session_df = pd.DataFrame(st.session_state['key'])
+                   session_df = pd.DataFrame(st.session_state['a'])
                    st.write(session_df)
                    final_df = session_df.append(new_row, ignore_index=True)
-                   st.session_state['key'] = final_df
+                   st.session_state['a'] = final_df
                    
          
 
