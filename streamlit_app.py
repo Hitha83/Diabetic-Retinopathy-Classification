@@ -62,10 +62,11 @@ def main():
                 scores.append(prob)
                 result = np.argmax(prob)
                 scoreArr.append(result)
+                
                 new_row ={'image': file_uploaded.name, 'results':scores, 'maxScore':scoreArr}
-                df.append(new_row, ignore_index=True)
+                
                 #data = np.array([image_names,scores,scoreArr])
-                #df_row = pd.DataFrame(data = data, columns = ['image','results','maxScore'])
+                df = pd.DataFrame(data = new_row, columns = ['image','results','maxScore'])
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
