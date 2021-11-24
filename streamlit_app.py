@@ -73,6 +73,17 @@ def main():
         # st.write('Map data')
 
 
+def import_and_predict(image):
+    model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
+    new_size = (128, 128)
+    image = image.resize(new_size)
+    # image=cv2.GaussianBlur( image , (5,5) ,0)
+    image = np.array(image, dtype="float") / 255.0
+    image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
+    yhat = model.predict(image)
+    return yhat
+
+
 with open("custom.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
@@ -92,18 +103,6 @@ if page == 'Predict the disease grade':
     if file:
         main()
         df = pd.DataFrame(columns = ['image','results','maxScore'])
-
-
-def import_and_predict(image):
-    
-            model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
-            new_size = (128,128)
-            image = image.resize(new_size)
-            #image=cv2.GaussianBlur( image , (5,5) ,0)
-            image = np.array(image, dtype="float") / 255.0
-            image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
-            yhat = model.predict(image)
-            return yhat
 
 
 
