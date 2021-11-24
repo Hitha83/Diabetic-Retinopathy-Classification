@@ -2,6 +2,7 @@
 
 import streamlit as st
 import tensorflow as tf
+import pandas as pd
 # Packages required for Image Classification
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -32,12 +33,18 @@ st.markdown("A simple web application for grading severity of diabetic retinopat
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
+    #
+    #	
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
+            
+            
+            #st.session_state['key'] = image_names
         st.success("File saved")
+
         
     if class_btn:
         if file_uploaded is None:
@@ -46,10 +53,34 @@ def main():
             with st.spinner('Model working....'):
                 plt.imshow(image)
                 plt.axis("off")
-                label = import_and_predict(image)
-                result = np.argmax(label)
+                scores = [] 
+                scoreArr = []
+                prob = import_and_predict(image)
+                scores.append(prob)
+                result = np.argmax(prob)
+                scoreArr.append(result)
                 st.success('Classified')
                 st.write(result)
+                #if 'key' not in st.session_state:
+                   #st.session_state['key'] = {'image': file_uploaded.name, 'results':scores, 'maxScore':scoreArr}
+                #else:
+                   #data_dict= st.session_state['key']
+                   #final_dict = data_dict.copy()
+                   #newfile="dfdf"
+                   #final_dict["image"].append(newfile)
+                   #data_dict["results"].append(scores)
+                   #data_dict["maxScore"].append(scoreArr)
+                   st.session_state['key'] = final_dict
+                #d = {'image': [], 'results': []}
+
+                data = []
+                #st.dataframe(data)
+                
+                
+                
+                st.write(st.session_state['key'])
+                   #df = pd.DataFrame.from_dict(data)
+                   #st.dataframe(df)
         
                 
                 #scores = tf.nn.softmax(predictions[0])
@@ -61,6 +92,7 @@ def main():
                 
             
 def import_and_predict(image):
+    
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
     new_size = (128,128)
     image = image.resize(new_size)
