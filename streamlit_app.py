@@ -70,7 +70,7 @@ def main():
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
-                st.dataframe(df)
+                st.write(df)
                 if 'key' not in st.session_state:
                    st.session_state['key'] = df
                 else:
