@@ -67,7 +67,6 @@ def main():
                 
                 #data = np.array([image_names,scores,scoreArr])
                 a = pd.DataFrame(new_row)
-                #key = a.dtypes.astype(str)
                 
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
@@ -80,7 +79,8 @@ def main():
                    session_df = pd.DataFrame(st.session_state.a)
                    st.write(session_df)
                    final_df = session_df.append(new_row, ignore_index=True)
-                   st.session_state.a= final_df        
+                   st.session_state.a= final_df  
+      
                    
 
   
@@ -90,7 +90,7 @@ def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
     new_size = (128,128)
     image = image.resize(new_size)
-    image=cv2.GaussianBlur( image , (5,5) ,0)
+    #image=cv2.GaussianBlur( image , (5,5) ,0)
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat = model.predict(image)
