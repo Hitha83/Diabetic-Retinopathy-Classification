@@ -59,8 +59,6 @@ def main():
                 scoreArr.append(result)
 
                 new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
-
-                a = pd.DataFrame(new_row)
                 st.success('Classified')
                 st.write(result)
 
@@ -86,6 +84,8 @@ if page == 'Predict the disease grade':
 
 if page == 'Visualise the result':
     file = True
+    new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
+    a = pd.DataFrame(new_row)
 
     if 'a' not in st.session_state:
         st.session_state.a = df
