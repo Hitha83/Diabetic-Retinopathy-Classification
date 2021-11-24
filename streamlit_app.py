@@ -25,6 +25,13 @@ fig = plt.figure()
 
 df = pd.DataFrame(columns=['image', 'results', 'maxScore'])
 def main():
+    with open("custom.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+    st.header("Diabetic Retinopathy Grade Classifier")
+
+    st.markdown(
+        "A simple web application for grading severity of diabetic retinopathy . The presence of Diabetic retinopathy are
     file_uploaded = st.file_uploader("Please upload your image dataset", type=["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
     if file_uploaded is not None:
