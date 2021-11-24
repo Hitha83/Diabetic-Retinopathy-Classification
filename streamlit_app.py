@@ -33,7 +33,7 @@ st.markdown("A simple web application for grading severity of diabetic retinopat
 st.sidebar.title('Navigation')
 page = st.sidebar.radio('What would you like to do', ['Predict the disease grade', 'Visualise the result'])
 
-if page == 'Predict the disease grade'
+if page == 'Predict the disease grade':
     row0col1, row0col2 = st.columns([1, 5])
     with row0col1:
         st.image('download.jfif')
