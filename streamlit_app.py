@@ -73,7 +73,10 @@ def main():
                 
                 if 'key' not in st.session_state:
                    st.session_state['key'] = df
-                
+                else:
+                   session_df = st.session_state['key']
+                   final_df = session_df.append(new_row)
+                   st.session_state['key'] = final_df
                    
                 #d = {'image': [], 'results': []}
 
