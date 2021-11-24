@@ -67,6 +67,7 @@ def main():
                 
                 #data = np.array([image_names,scores,scoreArr])
                 df = pd.DataFrame(new_row)
+		st.write(new_row)
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
@@ -85,7 +86,7 @@ def main():
                 
                 
                 
-                st.dataframe(st.session_state['key'])
+                st.write(st.session_state)
                    #df = pd.DataFrame.from_dict(data)
                    #st.dataframe(df)
         
