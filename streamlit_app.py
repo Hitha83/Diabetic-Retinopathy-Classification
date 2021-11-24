@@ -29,7 +29,7 @@ with open("custom.css") as f:
 st.header("Diabetic Retinopathy Grade Classifier")
 
 st.markdown("A simple web application for grading severity of diabetic retinopathy . The presence of Diabetic retinopathy are classified into five different grades namely: 0 - No DR, 1 - Mild, 2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
-
+image_names = []
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
@@ -41,7 +41,7 @@ def main():
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
             
-            
+            image_names.append(file_uploaded.name)
             #st.session_state['key'] = image_names
         st.success("File saved")
 
