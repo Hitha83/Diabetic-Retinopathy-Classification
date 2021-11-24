@@ -70,7 +70,7 @@ def main():
                    #final_dict["image"].append(newfile)
                    #data_dict["results"].append(scores)
                    #data_dict["maxScore"].append(scoreArr)
-                   st.session_state['key'] = final_dict
+                   #st.session_state['key'] = final_dict
                 #d = {'image': [], 'results': []}
 
                 data = []
@@ -78,7 +78,7 @@ def main():
                 
                 
                 
-                st.write(st.session_state['key'])
+                #st.write(st.session_state['key'])
                    #df = pd.DataFrame.from_dict(data)
                    #st.dataframe(df)
         
