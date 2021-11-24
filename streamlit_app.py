@@ -71,7 +71,7 @@ def main():
                 st.write(result)
                 st.dataframe(df)
                 if 'key' not in st.session_state:
-                   st.session_state['key'] = {'image': file_uploaded.name, 'results':scores, 'maxScore':scoreArr}
+                   st.session_state['key'] = df
                 else:
                    data_dict= st.session_state['key']
                    data_dict["image"].append(file_uploaded.name)
