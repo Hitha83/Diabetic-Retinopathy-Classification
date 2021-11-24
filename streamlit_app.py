@@ -65,9 +65,13 @@ def main():
                    st.session_state['key'] = {'image':file_uploaded.name, 'results':scores, 'maxScore' :scoreArr}
                 else:
                    data_dict= st.session_state['key']
-                   data_dict["image"].append(file_uploaded.name)
-                   data_dict["results"].append(scores)
-                   data_dict["maxScore"].append(scoreArr)
+                   if "image" in data_dict:
+                      data_dict["image"].append(file_uploaded.name)
+                   
+                   if "results" in data_dict:
+                      data_dict["results"].append(scores)
+                   if "maxScore" in data_dict:
+                      data_dict["maxScore"].append(scoreArr)
                    st.session_state['key'] = data_dict
                 #d = {'image': [], 'results': []}
 
