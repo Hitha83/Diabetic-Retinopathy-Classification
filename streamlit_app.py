@@ -67,18 +67,19 @@ def main():
                 
                 #data = np.array([image_names,scores,scoreArr])
                 a = pd.DataFrame(new_row)
+                key = a.dtypes.astype(str)
                 
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
                 
-                if 'a' not in st.session_state:
-                   st.session_state.a = a
+                if 'key' not in st.session_state:
+                   st.session_state.key = key
                 else:
-                   st.session_state.a = a
-                   st.dataframe(st.session_state['a'])
+                   st.session_state.key = key
+                   st.dataframe(st.session_state['key'])
                
-                  #st.write(st.session_state['key'])
+                   #st.write(st.session_state['key'])
                    #df = pd.DataFrame.from_dict(data)
                    #st.dataframe(df)
         
