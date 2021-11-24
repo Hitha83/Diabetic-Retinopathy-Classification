@@ -80,21 +80,11 @@ def main():
                    session_df = pd.DataFrame(st.session_state.a)
                    st.write(session_df)
                    final_df = session_df.append(new_row, ignore_index=True)
-                   st.session_state.a= final_df
-
-                            
-                  #st.write(st.session_state['key'])
-                   #df = pd.DataFrame.from_dict(data)
-                   #st.dataframe(df)
+                   st.session_state.a= final_df        
+                   st.write(session_df)
+                   #Bar Chart
+                   st.bar_chart(session_df['maxScore'])
         
-                
-                #scores = tf.nn.softmax(predictions[0])
-                #scores = scores.numpy()
-                #data = predict_on_image_set(scores)        
-                #st.dataframe(data)
-      
-                
-                
             
 def import_and_predict(image):
     
