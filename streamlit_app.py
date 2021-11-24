@@ -63,14 +63,14 @@ def main():
                 result = np.argmax(prob)
                 scoreArr.append(result)
                 
-                new_row ={'image': file_uploaded.name, 'results':scores, 'maxScore':scoreArr}
+                new_row ={'image': image_names, 'results':scores, 'maxScore':scoreArr}
                 
                 #data = np.array([image_names,scores,scoreArr])
                 df = pd.DataFrame(data = new_row, columns = ['image','results','maxScore'])
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
-                st.write(df)
+                st.dataframe(df)
                 if 'key' not in st.session_state:
                    st.session_state['key'] = df
                 else:
