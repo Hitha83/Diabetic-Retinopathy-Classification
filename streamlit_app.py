@@ -62,7 +62,7 @@ def main():
                 st.success('Classified')
                 st.write(result)
                 if 'key' not in st.session_state:
-                   st.session_state['key'] = {'image':image_names, 'results':scores, 'maxScore' :scoreArr}
+                   st.session_state['key'] = {'image', 'results', 'maxScore'}
                 else:
                    data_dict= st.session_state['key']
                    if "image" in data_dict:
