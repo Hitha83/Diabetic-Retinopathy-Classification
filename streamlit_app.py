@@ -66,7 +66,7 @@ def main():
                 new_row ={'image': image_names, 'results':scores, 'maxScore':scoreArr}
                 
                 #data = np.array([image_names,scores,scoreArr])
-                df = pd.DataFrame(data = new_row, columns = ['image','results','maxScore'])
+                df = pd.DataFrame(new_row)
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
