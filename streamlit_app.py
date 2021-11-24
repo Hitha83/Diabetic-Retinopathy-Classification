@@ -85,7 +85,7 @@ def main():
                 
                 
                 
-                st.write(st.session_state['key'])
+                st.dataframe(st.session_state['key'])
                    #df = pd.DataFrame.from_dict(data)
                    #st.dataframe(df)
         
