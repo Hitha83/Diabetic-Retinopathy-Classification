@@ -65,8 +65,8 @@ def main():
                    st.session_state['key'] = {'image', 'results', 'maxScore'}
                 else:
                    data_dict= st.session_state['key']
-                   if "image" in data_dict:
-                       data_dict["image"].append(image_names)
+                   #if "image" in data_dict:
+                   data_dict["image"].append(image_names)
                    
                    if "results" in data_dict:
                       data_dict["results"].append(scores)
