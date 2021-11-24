@@ -66,7 +66,7 @@ def main():
                 else:
                    data_dict= st.session_state['key']
                    if "image" in data_dict:
-                      data_dict["image"].append(file_uploaded.name)
+                      data_dict["image"].append('file_uploaded.name')
                    
                    if "results" in data_dict:
                       data_dict["results"].append(scores)
