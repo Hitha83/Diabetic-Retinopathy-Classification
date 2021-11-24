@@ -64,21 +64,6 @@ def main():
                 st.success('Classified')
                 st.write(result)
 
-                if 'a' not in st.session_state:
-                    st.session_state.a = df
-                    st.session_state.a = a
-                else:
-                    session_df = pd.DataFrame(st.session_state.a)
-                    st.write(session_df)
-                    final_df = session_df.append(new_row, ignore_index=True)
-                    st.session_state.a = final_df
-
-                    # vis_button = st.button("Visualise the Result")
-        # if vis_button:
-        # st.write('Line_chart.')
-        # st.line_chart(st.session_state.a)
-        # st.write('Map data')
-
 
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
@@ -90,15 +75,6 @@ def import_and_predict(image):
     yhat = model.predict(image)
     return yhat
 
-
-with open("custom.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-st.header("Diabetic Retinopathy Grade Classifier")
-
-st.markdown("A simple web application for grading severity of diabetic retinopathy . "
-"The presence of Diabetic retinopathy are classified into five different grades namely: 0 - No DR, 1 - Mild, "
-            "2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
 
 st.sidebar.title('Navigation')
 page = st.sidebar.radio('What would you like to do', ['Predict the disease grade', 'Visualise the result'])
@@ -112,7 +88,24 @@ if page == 'Predict the disease grade':
     if file:
         main()
 
-        df = pd.DataFrame(columns=['image', 'results', 'maxScore'])
+if page == 'Visualise the result':
+    file = True
+
+    if 'a' not in st.session_state:
+        st.session_state.a = df
+        st.session_state.a = a
+    else:
+        session_df = pd.DataFrame(st.session_state.a)
+        st.write(session_df)
+        final_df = session_df.append(new_row, ignore_index=True)
+        st.session_state.a = final_df
+
+        # vis_button = st.button("Visualise the Result")
+# if vis_button:
+# st.write('Line_chart.')
+# st.line_chart(st.session_state.a)
+# st.write('Map data')
+
 
 
 
