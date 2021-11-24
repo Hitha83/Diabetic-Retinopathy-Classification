@@ -66,7 +66,8 @@ def main():
                 else:
                    data_dict= st.session_state['key']
                    final_dict = data_dict.copy()
-                   final_dict["image"].append(file_uploaded.name)
+                   newfile="dfdf"
+                   final_dict["image"].append(newfile)
                    #data_dict["results"].append(scores)
                    #data_dict["maxScore"].append(scoreArr)
                    st.session_state['key'] = final_dict
