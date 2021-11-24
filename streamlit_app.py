@@ -23,7 +23,7 @@ from  matplotlib import pyplot as plt
 import matplotlib.image as mpimg
 fig = plt.figure()
 
-
+df = pd.DataFrame(columns=['image', 'results', 'maxScore'])
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type=["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
@@ -102,7 +102,8 @@ if page == 'Predict the disease grade':
     file = True
     if file:
         main()
-        df = pd.DataFrame(columns = ['image','results','maxScore'])
+
+        df = pd.DataFrame(columns=['image', 'results', 'maxScore'])
 
 
 
