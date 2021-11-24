@@ -23,6 +23,56 @@ from  matplotlib import pyplot as plt
 import matplotlib.image as mpimg
 fig = plt.figure()
 
+
+def main():
+    file_uploaded = st.file_uploader("Please upload your image dataset", type=["jpg", "png", "jpeg"])
+    class_btn = st.button("Classify")
+    if file_uploaded is not None:
+        image = Image.open(file_uploaded)
+        st.image(image, caption='Uploaded Image', use_column_width=True)
+        with open(os.path.join(".", file_uploaded.name), "wb")as f:
+            f.write(file_uploaded.getbuffer())
+
+        st.success("File saved")
+
+    if class_btn:
+        if file_uploaded is None:
+            st.write("Invalid command, please upload an image")
+        else:
+            with st.spinner('Model working....'):
+                plt.imshow(image)
+                plt.axis("off")
+                image_names = []
+                scores = []
+                scoreArr = []
+                image_names.append(file_uploaded.name)
+                prob = import_and_predict(image)
+                scores.append(prob)
+                result = np.argmax(prob)
+                scoreArr.append(result)
+
+                new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
+
+                a = pd.DataFrame(new_row)
+                st.success('Classified')
+                st.write(result)
+
+                if 'a' not in st.session_state:
+                    st.session_state.a = df
+                    st.session_state.a = a
+                else:
+                    session_df = pd.DataFrame(st.session_state.a)
+                    st.write(session_df)
+                    final_df = session_df.append(new_row, ignore_index=True)
+                    st.session_state.a = final_df
+
+                    # vis_button = st.button("Visualise the Result")
+        # if vis_button:
+        # st.write('Line_chart.')
+        # st.line_chart(st.session_state.a)
+        # st.write('Map data')
+
+
 with open("custom.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
@@ -43,58 +93,6 @@ if page == 'Predict the disease grade':
         main()
         df = pd.DataFrame(columns = ['image','results','maxScore'])
 
-def main():
-            file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
-            class_btn = st.button("Classify")	
-            if file_uploaded is not None:
-                image = Image.open(file_uploaded)
-                st.image(image, caption='Uploaded Image', use_column_width=True)
-                with open(os.path.join(".",file_uploaded.name),"wb")as f:
-                    f.write(file_uploaded.getbuffer())
-
-                st.success("File saved")
-
-        
-            if class_btn:
-                if file_uploaded is None:
-                    st.write("Invalid command, please upload an image")
-                else:
-                    with st.spinner('Model working....'):
-                        plt.imshow(image)
-                        plt.axis("off")
-                        image_names = []
-                        scores = [] 
-                        scoreArr = []
-                        image_names.append(file_uploaded.name)
-                        prob = import_and_predict(image)
-                        scores.append(prob)
-                        result = np.argmax(prob)
-                        scoreArr.append(result)
-                
-                        new_row ={'image': image_names, 'results':scores, 'maxScore':scoreArr}
-                
-                 
-                        a = pd.DataFrame(new_row)
-                        st.success('Classified')
-                        st.write(result)
-    
-             
-                        if 'a' not in st.session_state:
-                            st.session_state.a = df
-                            st.session_state.a = a
-                        else:
-                            session_df = pd.DataFrame(st.session_state.a)
-                            st.write(session_df)
-                            final_df = session_df.append(new_row, ignore_index=True)
-                            st.session_state.a= final_df  
-      
-                   
-                  #vis_button = st.button("Visualise the Result")
-                  #if vis_button:
-                      #st.write('Line_chart.')
-                      #st.line_chart(st.session_state.a)
-                      #st.write('Map data')
-       
 
 def import_and_predict(image):
     
