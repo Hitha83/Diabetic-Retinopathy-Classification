@@ -75,16 +75,13 @@ def main():
                 if 'key' not in st.session_state:
                    st.session_state['key'] = df
                 else:
-                   session_df = st.session_state['key']
+                   session_df = pd.DataFrame(st.session_state['key'])
                    st.dataframe(session_df)
                    final_df = session_df.append(new_row, ignore_index=True)
                    st.session_state['key'] = final_df
                    
-                #d = {'image': [], 'results': []}
+         
 
-                data = []
-                #st.dataframe(data)
-                
                 
                 
                 st.write(st.session_state['key'])
