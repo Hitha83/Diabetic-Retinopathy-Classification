@@ -30,8 +30,8 @@ def main():
 
     st.header("Diabetic Retinopathy Grade Classifier")
 
-    st.markdown(
-        "A simple web application for grading severity of diabetic retinopathy . The presence of Diabetic retinopathy are
+    st.markdown("A simple web application for grading severity of diabetic retinopathy . The presence of Diabetic retinopathy are classified into five different grades namely: 0 - No DR, 1 - Mild, "
+                "2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
     file_uploaded = st.file_uploader("Please upload your image dataset", type=["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
     if file_uploaded is not None:
@@ -96,7 +96,9 @@ with open("custom.css") as f:
 
 st.header("Diabetic Retinopathy Grade Classifier")
 
-st.markdown("A simple web application for grading severity of diabetic retinopathy . The presence of Diabetic retinopathy are classified into five different grades namely: 0 - No DR, 1 - Mild, 2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
+st.markdown("A simple web application for grading severity of diabetic retinopathy . "
+"The presence of Diabetic retinopathy are classified into five different grades namely: 0 - No DR, 1 - Mild, "
+            "2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
 
 st.sidebar.title('Navigation')
 page = st.sidebar.radio('What would you like to do', ['Predict the disease grade', 'Visualise the result'])
