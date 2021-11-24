@@ -97,8 +97,8 @@ if page == 'Visualise the result':
     else:
         session_df = pd.DataFrame(st.session_state.a)
         st.write(session_df)
-        final_df = session_df.append(new_row, ignore_index=True)
-        st.session_state.a = final_df
+        #final_df = session_df.append(new_row, ignore_index=True)
+        #st.session_state.a = final_df
 
         # vis_button = st.button("Visualise the Result")
 # if vis_button:
