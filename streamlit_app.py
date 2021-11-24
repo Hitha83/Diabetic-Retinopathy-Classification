@@ -67,7 +67,7 @@ def main():
                 
                 #data = np.array([image_names,scores,scoreArr])
                 df = pd.DataFrame(new_row)
-		st.write(new_row)
+                st.write(new_row)
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
