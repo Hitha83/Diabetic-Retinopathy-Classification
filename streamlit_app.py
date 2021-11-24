@@ -81,11 +81,22 @@ def main():
                    #final_df = session_df.append(new_row, ignore_index=True)
                    #st.session_state.a= final_df        
                    st.write(session_df)
+  
+                   st.download_button 
+				
+                   #def get_table_download_link_csv(df):
+    #csv = df.to_csv(index=False)
+    #csv = df.to_csv().encode()
+    #b64 = base64.b64encode(csv.encode()).decode() 
+    #b64 = base64.b64encode(csv).decode()
+    #href = f'<a href="data:file/csv;base64,{b64}" download="captura.csv" target="_blank">Download csv file</a>'
+    #return href  
+                 
                    #barchart
-                   st.bar_chart(session_df['maxScore'])
-                   session_df['maxScore'].hist()
-                   plt.show()
-                   st.pyplot()
+                   #st.bar_chart(session_df['maxScore'])
+                   #session_df['maxScore'].hist()
+                   #plt.show()
+                   #st.pyplot()
         
             
 def import_and_predict(image):
@@ -93,7 +104,7 @@ def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
     new_size = (128,128)
     image = image.resize(new_size)
-    #image=cv2.GaussianBlur( image , (5,5) ,0)
+    image=cv2.GaussianBlur( image , (5,5) ,0)
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat = model.predict(image)
