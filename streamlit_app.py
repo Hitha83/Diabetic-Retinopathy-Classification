@@ -82,23 +82,7 @@ def main():
                    #st.session_state.a= final_df        
                    st.write(session_df)
   
-                   #st.download_button 
-				
-                   #def get_table_download_link_csv(df):
-    #csv = df.to_csv(index=False)
-    #csv = df.to_csv().encode()
-    #b64 = base64.b64encode(csv.encode()).decode() 
-    #b64 = base64.b64encode(csv).decode()
-    #href = f'<a href="data:file/csv;base64,{b64}" download="captura.csv" target="_blank">Download csv file</a>'
-    #return href  
-                 
-                   #barchart
-                   #st.bar_chart(session_df['maxScore'])
-                   #session_df['maxScore'].hist()
-                   #plt.show()
-                   #st.pyplot()
-        
-            
+                     
 def import_and_predict(image):
     
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
