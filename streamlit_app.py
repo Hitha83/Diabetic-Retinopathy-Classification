@@ -83,10 +83,9 @@ def main():
                 vis_button = st.button("Visualise the Result")
                 if vis_button:
                     st.write('Line_chart.')
-                    st.line_chart(session_df)
+                    st.line_chart(st.session_state.a)
                     st.write('Map data')
-                    data_of_map = session_df[maxScore]
-                    st.map(data_of_map)
+       
 
   
                      
