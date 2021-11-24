@@ -63,7 +63,7 @@ def main():
                 result = np.argmax(prob)
                 scoreArr.append(result)
                 data = np.array([image_names,scores,scoreArr])
-                df_row = pd.dataFrame(data = data, columns = ['image','results','maxScore'])
+                df_row = pd.DataFrame(data = data, columns = ['image','results','maxScore'])
                 df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
