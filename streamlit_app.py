@@ -73,18 +73,12 @@ def main():
                 st.write(result)
                 
                 if 'a' not in st.session_state:
-                   st.session_state.a = df
+                   st.session_state.a = a
                 else:
-                   session_df = pd.DataFrame(st.session_state.a)
-                   st.write(session_df)
-                   final_df = session_df.append(new_row, ignore_index=True)
-                   st.session_state.a= final_df
-                   
-         
-
-                
-                
-                st.write(st.session_state['key'])
+                   st.session_state.a = a
+                   st.dataframe(st.session_state['a'])
+               
+                  #st.write(st.session_state['key'])
                    #df = pd.DataFrame.from_dict(data)
                    #st.dataframe(df)
         
