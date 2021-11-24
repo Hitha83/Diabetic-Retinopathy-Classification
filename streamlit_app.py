@@ -78,9 +78,11 @@ def main():
                    st.session_state.a = a
                 else:
                    session_df = pd.DataFrame(st.session_state.a)
+                   st.write(session_df)
                    final_df = session_df.append(new_row, ignore_index=True)
                    st.session_state.a= final_df        
-                   st.write(session_df)
+                   
+
   
                      
 def import_and_predict(image):
