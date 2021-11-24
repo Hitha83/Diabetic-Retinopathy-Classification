@@ -80,10 +80,6 @@ st.sidebar.title('Navigation')
 page = st.sidebar.radio('What would you like to do', ['Predict the disease grade', 'Visualise the result'])
 
 if page == 'Predict the disease grade':
-    st.image('download.jfif')
-    st.title('Diabetic Retinopathy')
-
-    # file = st.file_uploader('Insert Data')
     file = True
     if file:
         main()
@@ -96,15 +92,15 @@ if page == 'Visualise the result':
         st.session_state.a = a
     else:
         session_df = pd.DataFrame(st.session_state.a)
-        st.write(session_df)
+        st.dataframe(session_df)
         #final_df = session_df.append(new_row, ignore_index=True)
         #st.session_state.a = final_df
 
-        # vis_button = st.button("Visualise the Result")
-# if vis_button:
-# st.write('Line_chart.')
-# st.line_chart(st.session_state.a)
-# st.write('Map data')
+    vis_button = st.button("Visualise the Result")
+    if vis_button:
+        st.write('Line_chart.')
+        st.line_chart(st.session_state.a)
+        st.write('Map data')
 
 
 
