@@ -34,16 +34,13 @@ df = pd.DataFrame(columns = ['image','results','maxScore'])
 
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
-    class_btn = st.button("Classify")
-    #
-    #	
+    class_btn = st.button("Classify")	
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
 
-            #st.session_state['key'] = image_names
         st.success("File saved")
 
         
@@ -71,6 +68,7 @@ def main():
                 #df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
+    
              
                 if 'a' not in st.session_state:
                    st.session_state.a = df
@@ -82,6 +80,13 @@ def main():
                    st.session_state.a= final_df  
       
                    
+                vis_button = st.button("Visualise the Result")
+                if vis_button:
+                    st.write('Line_chart.')
+                    st.line_chart(session_df)
+                    st.write('Map data')
+                    data_of_map = session_df[maxScore]
+                    st.map(data_of_map)
 
   
                      
