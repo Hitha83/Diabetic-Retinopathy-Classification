@@ -91,11 +91,11 @@ if page == 'Predict the disease grade':
                             st.session_state.a= final_df  
       
                    
-                         vis_button = st.button("Visualise the Result")
-                         if vis_button:
-                             st.write('Line_chart.')
-                             st.line_chart(st.session_state.a)
-                             st.write('Map data')
+                       vis_button = st.button("Visualise the Result")
+                       if vis_button:
+                           st.write('Line_chart.')
+                           st.line_chart(st.session_state.a)
+                           st.write('Map data')
        
 
         def import_and_predict(image):
