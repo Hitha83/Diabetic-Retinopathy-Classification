@@ -82,7 +82,7 @@ def main():
                    #st.session_state.a= final_df        
                    st.write(session_df)
   
-                   st.download_button 
+                   #st.download_button 
 				
                    #def get_table_download_link_csv(df):
     #csv = df.to_csv(index=False)
