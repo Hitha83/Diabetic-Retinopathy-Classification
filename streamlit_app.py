@@ -29,7 +29,9 @@ with open("custom.css") as f:
 st.header("Diabetic Retinopathy Grade Classifier")
 
 st.markdown("A simple web application for grading severity of diabetic retinopathy . The presence of Diabetic retinopathy are classified into five different grades namely: 0 - No DR, 1 - Mild, 2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
-image_names = []
+
+df = pd.DataFrame(columns = ['image','results','maxScore'])
+
 def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type = ["jpg", "png", "jpeg"])
     class_btn = st.button("Classify")
@@ -40,8 +42,7 @@ def main():
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".",file_uploaded.name),"wb")as f:
             f.write(file_uploaded.getbuffer())
-            
-            image_names.append(file_uploaded.name)
+
             #st.session_state['key'] = image_names
         st.success("File saved")
 
@@ -53,14 +54,20 @@ def main():
             with st.spinner('Model working....'):
                 plt.imshow(image)
                 plt.axis("off")
+                image_names = []
                 scores = [] 
                 scoreArr = []
+                image_names.append(file_uploaded.name)
                 prob = import_and_predict(image)
                 scores.append(prob)
                 result = np.argmax(prob)
                 scoreArr.append(result)
+                data = np.array([image_names,scores,scoreArr])
+                df_row = pd.dataFrame(data = data, columns = ['image','results','maxScore'])
+                df = pd.concat([df,df_row], ignore_index=True)
                 st.success('Classified')
                 st.write(result)
+                st.dataframe(df)
                 if 'key' not in st.session_state:
                    st.session_state['key'] = {'image': file_uploaded.name, 'results':scores, 'maxScore':scoreArr}
                 else:
