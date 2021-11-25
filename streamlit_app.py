@@ -61,6 +61,17 @@ def main():
                 new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
                 st.success('Classified')
                 st.write(result)
+                new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
+                a = pd.DataFrame(new_row)
+
+                if 'a' not in st.session_state:
+                    st.session_state.a = df
+                    st.session_state.a = a
+                else:
+                    session_df = pd.DataFrame(st.session_state.a)
+                    st.dataframe(session_df)
+                    # final_df = session_df.append(new_row, ignore_index=True)
+                    # st.session_state.a = final_df
 
 
 def import_and_predict(image):
@@ -83,24 +94,9 @@ if page == 'Predict the disease grade':
         main()
 
 if page == 'Visualise the result':
-    file = True
-    new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
-    a = pd.DataFrame(new_row)
-
-    if 'a' not in st.session_state:
-        st.session_state.a = df
-        st.session_state.a = a
-    else:
-        session_df = pd.DataFrame(st.session_state.a)
-        st.dataframe(session_df)
-        #final_df = session_df.append(new_row, ignore_index=True)
-        #st.session_state.a = final_df
-
-    vis_button = st.button("Visualise the Result")
-    if vis_button:
-        st.write('Line_chart.')
-        st.line_chart(st.session_state.a)
-        st.write('Map data')
+    st.write('Line_chart.')
+    st.line_chart(st.session_state.a)
+    st.write('Map data')
 
 
 
