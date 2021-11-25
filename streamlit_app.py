@@ -70,6 +70,7 @@ def main():
                     st.write(session_df)
                     final_df = session_df.append(new_row, ignore_index=True)
                     st.session_state.a = final_df
+                    predicted_data = download_csv(predicted_data,final_df)
 
                     st.write('Line_chart.')
                     st.line_chart(final_df)
@@ -91,6 +92,14 @@ def import_and_predict(image):
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat = model.predict(image)
     return yhat
+
+
+def download_csv(name, df):
+    csv = df.to_csv(index=False)
+    base = base64.b64encode(csv.encode()).decode()
+    file = (f'<a href="data:file/csv;base64,{base}" download="%s.csv">Download file</a>' % (name))
+
+    return file
 
 if __name__ == '__main__':
     main()
