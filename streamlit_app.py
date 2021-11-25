@@ -77,12 +77,7 @@ def main():
                     st.write(final_df)
                     st.markdown(download_csv('predicted Data Frame',final_df),unsafe_allow_html=True)
 
-                    pred['group'] = np.where(pred['maxScore'] > 0.30, 1, 2)
-                    st.subheader("Image Disease Grades with probability more than 80%")
-                    if st.checkbox("Show Data"):
-                        st.subheader("Data")
-                        st.write(pred)
-
+                   
                     st.write('Line_chart.')
                     st.line_chart(final_df['maxScore'])
                     st.write('Bar chart')
