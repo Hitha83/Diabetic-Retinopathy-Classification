@@ -50,17 +50,17 @@ def main():
                 plt.imshow(image)
                 plt.axis("off")
                 image_names = []
-                scores = []
-                scoreArr = []
+                prob_scores = []
+                classes = []
                 image_names.append(file_uploaded.name)
                 prob = import_and_predict(image)
-                scores.append(prob)
-                result = np.argmax(prob,axis =1)
-                scoreArr.append(result)
+                prob_scores.append(prob[np.argmax(prob)])
+                class_value = np.argmax(prob,axis =1)
+                classes.append(class_value)
 
-                new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
+                new_row = {'image': image_names, 'probability': prob_scores, 'classes': classes}
                 st.success('Classified')
-                st.write(result)
+                st.write(class_value)
 
                 a = pd.DataFrame(new_row)
 
@@ -74,7 +74,7 @@ def main():
                     #dataframe_btn = st.button(" Download Final Dataframe")
                     #if dataframe_btn:
                     st.title('Final DataFrame')
-                    final_df['group'] = np.where(final_df['maxScore'] > 0.80, 1, 2)
+                    final_df['prob>80%'] = np.where(probability[final_df['probability']]> 8.0, 1, 2)
                     st.subheader("Image Disease Grades with probability more than 80%")
                     if st.checkbox("Show Data"):
                         st.subheader("Data")
@@ -84,7 +84,7 @@ def main():
 
 
                     st.write('Line_chart.')
-                    st.line_chart(final_df['maxScore'])
+                    st.line_chart(final_df['classes'])
                     #st.write('Bar chart')
                     #st.bar_chart(final_df['maxScore'])
                     #final_df['maxScore'].hist(figsize=(10, 5))
