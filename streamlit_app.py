@@ -80,7 +80,7 @@ def main():
 
 
 def import_and_predict(image):
-    model = classifier_model = tf.keras.models.load_model('vgg16-gauss-smote')
+    model = classifier_model = tf.keras.models.load_model('DR3000-60.h5)
     new_size = (128, 128)
     image = image.resize(new_size)
     #image=cv2.GaussianBlur( image , (5,5) ,0)
