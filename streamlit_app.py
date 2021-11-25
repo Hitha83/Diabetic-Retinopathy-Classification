@@ -75,8 +75,11 @@ def main():
                     st.line_chart(final_df)
                     st.write('Bar chart')
                     st.bar_chart(final_df)
-                    st.write('Map data')
-                    st.map(final_df)
+                    images = final_df['image']
+                    max_scores = final_df['maxScore']
+                    image_choice = st.sidebar.selectbox('Select image:', images)
+                    max_sc = df["maxScore"].loc[df["image"] == image_choice]
+
 
 
 def import_and_predict(image):
