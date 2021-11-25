@@ -75,7 +75,7 @@ def main():
                     st.line_chart(final_df)
                     st.write('Bar chart')
                     st.bar_chart(final_df)
-                    images = final_df['image']
+                    images = final_df['image'].unique()
                     max_scores = final_df['maxScore']
                     image_choice = st.sidebar.selectbox('Select image:', images)
                     max_sc = df["maxScore"].loc[df["image"] == image_choice]
