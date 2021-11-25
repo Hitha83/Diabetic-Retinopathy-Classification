@@ -3,6 +3,7 @@
 import streamlit as st
 import tensorflow as tf
 import pandas as pd
+import base64
 # Packages required for Image Classification
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
