@@ -74,7 +74,7 @@ def main():
                     #dataframe_btn = st.button(" Download Final Dataframe")
                     #if dataframe_btn:
                     st.title('Final DataFrame')
-                    final_df['prob>80%'] = ''
+                    final_df['prob>80%'] = final_df[final_df['probability']>8.0.any(1)]
                     st.subheader("Image Disease Grades with probability more than 80%")
                     if st.checkbox("Show Data"):
                         st.subheader("Data")
