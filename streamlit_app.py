@@ -77,10 +77,19 @@ def main():
                     st.write(final_df)
                     st.markdown(download_csv('predicted Data Frame',final_df),unsafe_allow_html=True)
 
+                    pred['group'] = np.where(pred['maxScore'] > 0.30, 1, 2)
+                    st.subheader("Image Disease Grades with probability more than 80%")
+                    if st.checkbox("Show Data"):
+                        st.subheader("Data")
+                        st.write(pred)
+
                     st.write('Line_chart.')
                     st.line_chart(final_df['maxScore'])
                     st.write('Bar chart')
-                    st.bar_chart(final_df)
+                    st.bar_chart(final_df['maxScore'])
+                    fina_df['maxScore'].hist(figsize=(10, 5))
+                    st.pyplot()
+                    #st.bar_chart(final_df)
                     #images = final_df['image'].unique()
                     #max_scores = final_df['maxScore']
                     #image_choice = st.sidebar.selectbox('Select image:', images)
