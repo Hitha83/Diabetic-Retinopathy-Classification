@@ -33,7 +33,6 @@ def main():
     st.markdown("A simple web application for grading severity of diabetic retinopathy . The presence of Diabetic retinopathy are classified into five different grades namely: 0 - No DR, 1 - Mild, "
                 "2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
     file_uploaded = st.file_uploader("Please upload your image dataset", type=["jpg", "png", "jpeg"])
-    class_btn = st.button("Classify")
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         st.image(image, caption='Uploaded Image', use_column_width=True)
@@ -41,7 +40,7 @@ def main():
             f.write(file_uploaded.getbuffer())
 
         st.success("File saved")
-
+    class_btn = st.button("Classify")
     if class_btn:
         if file_uploaded is None:
             st.write("Invalid command, please upload an image")
@@ -61,25 +60,31 @@ def main():
                 new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
                 st.success('Classified')
                 st.write(result)
-                a = pd.DataFrame(new_row)
+                data_btn = st.button("Dataframe")
+                if data_btn:
+                    a = pd.DataFrame(new_row)
 
-                if 'a' not in st.session_state:
-                    st.session_state.a = a
-                else:
-                    session_df = pd.DataFrame(st.session_state.a)
-                    st.write(session_df)
-                    final_df = session_df.append(new_row, ignore_index=True)
-                    st.session_state.a = final_df
-                    predicted_data = download_csv(predicted_data,final_df)
+                    if 'a' not in st.session_state:
+                        st.session_state.a = a
+                    else:
+                        session_df = pd.DataFrame(st.session_state.a)
+                        st.write(session_df)
+                        final_df = session_df.append(new_row, ignore_index=True)
+                        st.session_state.a = final_df
+                        dataframe_btn = st.button(" Download Final Dataframe")
+                    if dataframe_btn:
+                        st.title('Final DataFrame')
+                        st.write(final_df)
+                    st.markdown(download_csv('predicted Data Frame',final_df),unsafe_allow_html=True)
 
                     st.write('Line_chart.')
-                    st.line_chart(final_df)
+                    st.line_chart(final_df['maxScore'])
                     st.write('Bar chart')
                     st.bar_chart(final_df)
-                    images = final_df['image'].unique()
-                    max_scores = final_df['maxScore']
-                    image_choice = st.sidebar.selectbox('Select image:', images)
-                    max_scores = df["maxScore"].loc[df["image"] == image_choice]
+                    #images = final_df['image'].unique()
+                    #max_scores = final_df['maxScore']
+                    #image_choice = st.sidebar.selectbox('Select image:', images)
+                    #max_scores = df["maxScore"].loc[df["image"] == image_choice]
 
 
 
