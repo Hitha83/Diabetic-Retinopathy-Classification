@@ -72,9 +72,9 @@ def main():
                     st.session_state.a = final_df
 
                     st.write('Line_chart.')
-                    st.line_chart(final_df['maxScore'])
+                    st.line_chart(final_d)
                     st.write('Map data')
-                    st.map(final_df)
+                    st.map(final_df['maxScore'])
 
 
 def import_and_predict(image):
