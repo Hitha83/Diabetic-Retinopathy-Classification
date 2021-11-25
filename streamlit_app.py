@@ -85,8 +85,8 @@ def main():
 
 
 
-                    st.write('Line_chart.')
-                    st.line_chart(final_df['classes'])
+                st.write('Line_chart.')
+                st.line_chart(final_data['classes'])
                     #st.write('Bar chart')
                     #st.bar_chart(final_df['maxScore'])
                     #final_df['maxScore'].hist(figsize=(10, 5))
