@@ -87,11 +87,12 @@ def import_and_predict(image):
     yhat = model.predict(image)
     return yhat
 
+    if __name__ == '__main__':
+        main()
 
 
-    st.write('Line_chart.')
-    st.line_chart(st.session_state.a)
-    st.write('Map data')
+
+   
 
 
 
