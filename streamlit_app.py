@@ -76,10 +76,10 @@ def main():
                 #if dataframe_btn:
                 final_data = pd.DataFrame(st.session_state.a)
                 st.title('Final DataFrame')
-                final_data['prob>80%'] = final_data[final_data['probability']>8.0]
-                st.subheader("Image Disease Grades with probability more than 80%")
-                if st.checkbox("Show Data"):
-                    st.subheader("Data")
+                #final_data['prob>80%'] = final_data[final_data['probability']>8.0]
+                #st.subheader("Image Disease Grades with probability more than 80%")
+                #if st.checkbox("Show Data"):
+                #    st.subheader("Data")
                 st.write(final_data)
                 st.markdown(download_csv('predicted Data Frame',final_data),unsafe_allow_html=True)
 
