@@ -55,7 +55,7 @@ def main():
                 image_names.append(file_uploaded.name)
                 prob = import_and_predict(image)
                 scores.append(prob)
-                result = np.argmax(prob)
+                result = np.argmax(prob,axis =1)
                 scoreArr.append(result)
 
                 new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
@@ -80,10 +80,10 @@ def main():
 
                     st.write('Line_chart.')
                     st.line_chart(final_df['maxScore'])
-                    st.write('Bar chart')
-                    st.bar_chart(final_df['maxScore'])
-                    final_df['maxScore'].hist(figsize=(10, 5))
-                    st.pyplot()
+                    #st.write('Bar chart')
+                    #st.bar_chart(final_df['maxScore'])
+                    #final_df['maxScore'].hist(figsize=(10, 5))
+                    #st.pyplot()
                     #st.bar_chart(final_df)
                     #images = final_df['image'].unique()
                     #max_scores = final_df['maxScore']
