@@ -72,7 +72,7 @@ def main():
                     st.session_state.a = final_df
 
                     st.write('Line_chart.')
-                    st.line_chart(final_d)
+                    st.line_chart(final_df)
                     st.write('Map data')
                     st.map(final_df['maxScore'])
 
