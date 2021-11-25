@@ -71,6 +71,11 @@ def main():
                     final_df = session_df.append(new_row, ignore_index=True)
                     st.session_state.a = final_df
 
+                    st.write('Line_chart.')
+                    st.line_chart(final_df['maxScore'])
+                    st.write('Map data')
+                    st.map(final_df)
+
 
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
@@ -83,15 +88,7 @@ def import_and_predict(image):
     return yhat
 
 
-st.sidebar.title('Navigation')
-page = st.sidebar.radio('What would you like to do', ['Predict the disease grade', 'Visualise the result'])
 
-if page == 'Predict the disease grade':
-    file = True
-    if file:
-        main()
-
-if page == 'Visualise the result':
     st.write('Line_chart.')
     st.line_chart(st.session_state.a)
     st.write('Map data')
