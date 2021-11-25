@@ -60,18 +60,17 @@ def main():
                 new_row = {'image': image_names, 'results': scores, 'maxScore': scoreArr}
                 st.success('Classified')
                 st.write(result)
-                data_btn = st.button("Dataframe")
-                if data_btn:
-                    a = pd.DataFrame(new_row)
 
-                    if 'a' not in st.session_state:
-                        st.session_state.a = a
-                    else:
-                        session_df = pd.DataFrame(st.session_state.a)
-                        st.write(session_df)
-                        final_df = session_df.append(new_row, ignore_index=True)
-                        st.session_state.a = final_df
-                        dataframe_btn = st.button(" Download Final Dataframe")
+                a = pd.DataFrame(new_row)
+
+                if 'a' not in st.session_state:
+                    st.session_state.a = a
+                else:
+                    session_df = pd.DataFrame(st.session_state.a)
+                    st.write(session_df)
+                    final_df = session_df.append(new_row, ignore_index=True)
+                    st.session_state.a = final_df
+                    dataframe_btn = st.button(" Download Final Dataframe")
                     if dataframe_btn:
                         st.title('Final DataFrame')
                         st.write(final_df)
