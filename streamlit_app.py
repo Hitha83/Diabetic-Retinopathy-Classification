@@ -73,8 +73,10 @@ def main():
 
                     st.write('Line_chart.')
                     st.line_chart(final_df)
+                    st.write('Bar chart')
+                    st.bar_chart(final_df)
                     st.write('Map data')
-                    st.map(final_df['maxScore'])
+                    st.map(final_df)
 
 
 def import_and_predict(image):
