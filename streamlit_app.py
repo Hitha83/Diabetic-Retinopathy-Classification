@@ -77,12 +77,12 @@ def main():
                     st.write(final_df)
                     st.markdown(download_csv('predicted Data Frame',final_df),unsafe_allow_html=True)
 
-                   
+
                     st.write('Line_chart.')
                     st.line_chart(final_df['maxScore'])
                     st.write('Bar chart')
                     st.bar_chart(final_df['maxScore'])
-                    fina_df['maxScore'].hist(figsize=(10, 5))
+                    final_df['maxScore'].hist(figsize=(10, 5))
                     st.pyplot()
                     #st.bar_chart(final_df)
                     #images = final_df['image'].unique()
