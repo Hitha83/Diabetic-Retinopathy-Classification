@@ -71,10 +71,10 @@ def main():
                     st.write(session_df)
                     final_df = session_df.append(new_row, ignore_index=True)
                     st.session_state.a = final_df
-                    dataframe_btn = st.button(" Download Final Dataframe")
-                    if dataframe_btn:
-                        st.title('Final DataFrame')
-                        st.write(final_df)
+                    #dataframe_btn = st.button(" Download Final Dataframe")
+                    #if dataframe_btn:
+                    st.title('Final DataFrame')
+                    st.write(final_df)
                     st.markdown(download_csv('predicted Data Frame',final_df),unsafe_allow_html=True)
 
                     st.write('Line_chart.')
