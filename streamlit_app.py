@@ -95,7 +95,7 @@ def main():
                 images = final_df['image'].unique()
                 classes = final_df['classes']
                 image_choice = st.sidebar.selectbox('Select image:', images)
-                classes =  df["classes"].loc[df["image"] == image_choice]
+                classes =  final_df["classes"].loc[final_df["image"] == image_choice]
 
 
 
