@@ -91,7 +91,7 @@ def main():
                 #st.bar_chart(final_df['classes'])
                 #final_df['classes'].hist(figsize=(10, 5))
                 #st.pyplot()
-                st.bar_chart(final_data['classes'])
+                st.bar_chart(final_data)
                 images = final_data['image']
                 classes = final_data['classes']
                 image_choice = st.sidebar.selectbox('Select image:', images)
