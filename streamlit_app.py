@@ -58,7 +58,7 @@ def main():
                 class_value = np.argmax(prob,axis =1)
                 classes.append(class_value[0])
 
-                new_row = {'image': image_names, 'probability': prob_scores, 'classes': classes}
+                new_row = {'image': image_names, 'probability': prob_scores[0], 'classes': classes}
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value[0]))
 
