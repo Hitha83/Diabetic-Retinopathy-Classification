@@ -92,10 +92,10 @@ def main():
                 #final_df['classes'].hist(figsize=(10, 5))
                 #st.pyplot()
                 st.bar_chart(final_df['classes'])
-                    #images = final_df['image'].unique()
-                    #max_scores = final_df['maxScore']
-                    #image_choice = st.sidebar.selectbox('Select image:', images)
-                    #max_scores = df["maxScore"].loc[df["image"] == image_choice]
+                images = final_df['image'].unique()
+                classes = final_df['classes']
+                image_choice = st.sidebar.selectbox('Select image:', images)
+                classes =  df["classes"].loc[df["image"] == image_choice]
 
 
 
