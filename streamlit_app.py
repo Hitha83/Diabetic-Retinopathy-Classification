@@ -91,11 +91,11 @@ def main():
                 #st.bar_chart(final_df['classes'])
                 #final_df['classes'].hist(figsize=(10, 5))
                 #st.pyplot()
-                st.bar_chart(final_df['classes'])
-                images = final_df['image'].unique()
-                classes = final_df['classes']
+                st.bar_chart(final_data['classes'])
+                images = final_data['image'].unique()
+                classes = final_data['classes']
                 image_choice = st.sidebar.selectbox('Select image:', images)
-                classes =  final_df["classes"].loc[final_df["image"] == image_choice]
+                classes =  final_data["classes"].loc[final_data["image"] == image_choice]
 
 
 
