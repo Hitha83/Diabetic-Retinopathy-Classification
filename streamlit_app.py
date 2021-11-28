@@ -11,7 +11,7 @@ from keras.applications.vgg16 import preprocess_input
 from keras.applications.vgg16 import decode_predictions
 from keras.applications.vgg16 import VGG16
 from PIL import Image
-#import cv2
+import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
@@ -106,7 +106,7 @@ def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
     new_size = (128, 128)
     image = image.resize(new_size)
-    #image=cv2.GaussianBlur( image , (5,5) ,0)
+    image=cv2.GaussianBlur( image , (5,5) ,0)
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat = model.predict(image)
