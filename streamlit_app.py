@@ -53,7 +53,7 @@ def main():
                 prob_scores = []
                 classes = []
                 image_names.append(file_uploaded.name)
-                prob = import_and_predict(image)
+                prob = import_and_predict(file_uploaded)
                 prob_scores.append(prob[np.argmax(prob)])
                 class_value = np.argmax(prob,axis =1)
                 classes.append(class_value[0])
@@ -104,7 +104,7 @@ def main():
 
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
-    image = cv2.imread(file_uploaded)
+    image = cv2.imread('file_uploaded')
     image = cv2.resize(image,(128,128))
     image = cv2.GaussianBlur( image, (5,5),0)
     image = np.array(image, dtype="float") / 255.0
