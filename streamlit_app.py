@@ -108,8 +108,8 @@ def import_and_predict(image):
     image = np.array(image)
     height,width =128,128
     image = image.resize(height,width)
-    image = image.filter(ImageFilter.GaussianBlur(radius=5))
-    #image = cv2.GaussianBlur( image, (5,5),0)
+    #image = image.filter(ImageFilter.GaussianBlur(radius=5))
+    image = cv2.GaussianBlur( image, (5,5),0)
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat = model.predict(image)
