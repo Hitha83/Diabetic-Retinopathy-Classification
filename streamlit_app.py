@@ -35,9 +35,8 @@ def main():
                 "2 - Moderate, 3 - Severe, 4 - Proliferative DR.")
     file_uploaded = st.file_uploader("Please upload your image dataset", type=["jpg", "png", "jpeg"])
     if file_uploaded is not None:
-        #image = Image.open(file_uploaded)
-        image = cv2.imread('file_uploaded')
-        #cv2.imshow("Original", image)
+        image = Image.open(file_uploaded)
+
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".", file_uploaded.name), "wb")as f:
             f.write(file_uploaded.getbuffer())
@@ -106,8 +105,9 @@ def main():
 
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
-    image = cv2.resize(image,(128,128), interpolation=cv2.INTER_AREA)
-    image = cv2.GaussianBlur( image, (5,5),0)
+    image = image.resize(128,128)
+    image = image.filter(ImageFilter.GaussianBlur(radius=5))
+    #image = cv2.GaussianBlur( image, (5,5),0)
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat = model.predict(image)
