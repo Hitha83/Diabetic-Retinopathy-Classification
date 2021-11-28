@@ -97,7 +97,8 @@ def main():
                 classes = final_data['classes']
                 image_choice = st.sidebar.selectbox('Select image:', images)
                 if image_choice == 'Select image':
-                    classes =  final_data["classes"].loc[final_data["image"] == image_choice]
+                    img_class =  final_data["classes"].loc[final_data["image"] == image_choice]
+                    st.write(img_class)
 
 
 
