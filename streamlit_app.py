@@ -36,7 +36,7 @@ def main():
     file_uploaded = st.file_uploader("Please upload your image dataset", type=["jpg", "png", "jpeg"])
     if file_uploaded is not None:
         #image = Image.open(file_uploaded)
-        image = cv2.imread(file_uploaded)
+        image = cv2.imread('file_uploaded')
         #cv2.imshow("Original", image)
         st.image(image, caption='Uploaded Image', use_column_width=True)
         with open(os.path.join(".", file_uploaded.name), "wb")as f:
