@@ -93,9 +93,9 @@ def main():
                 #st.pyplot()
                 st.bar_chart(final_data['classes'])
 
-                image_choice = st.sidebar.selectbox('Select image:', images)
                 images = final_data['image']
                 classes = final_data['classes']
+                image_choice = st.sidebar.selectbox('Select image:', images)
                 if image_choice == 'Select image':
                     classes =  final_data["classes"].loc[final_data["image"] == image_choice]
 
