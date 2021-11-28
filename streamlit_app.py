@@ -57,7 +57,7 @@ def main():
                 prob = import_and_predict(image)
                 prob_scores.append(prob[np.argmax(prob)])
                 class_value = np.argmax(prob,axis =1)
-                classes.append(class_value[0])
+                classes.append(class_value)
 
                 new_row = {'image': image_names, 'probability': prob_scores, 'classes': classes}
                 st.success('Classified')
@@ -108,7 +108,6 @@ def import_and_predict(image):
     image = np.array(image)
     height,width =128,128
     image = cv2.resize(image,(height,width))
-    #image = image.filter(ImageFilter.GaussianBlur(radius=5))
     image = cv2.GaussianBlur(image, (5,5),0)
     image = np.array(image, dtype="float") / 255.0
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
