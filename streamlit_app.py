@@ -105,7 +105,9 @@ def main():
 
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
-    image = image.resize(128,128)
+    image = np.array(image)
+    height,width =128,128
+    image = image.resize(height,width)
     image = image.filter(ImageFilter.GaussianBlur(radius=5))
     #image = cv2.GaussianBlur( image, (5,5),0)
     image = np.array(image, dtype="float") / 255.0
