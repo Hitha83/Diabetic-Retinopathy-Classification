@@ -11,7 +11,7 @@ from keras.applications.vgg16 import preprocess_input
 from keras.applications.vgg16 import decode_predictions
 from keras.applications.vgg16 import VGG16
 from PIL import Image
-import cv2
+#import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
