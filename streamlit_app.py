@@ -92,7 +92,14 @@ def main():
                 #final_df['classes'].hist(figsize=(10, 5))
                 #st.pyplot()
                 st.bar_chart(final_data['classes'])
+                menu = final_data['image']
+
+                op = st.sidebar.selectbox('Option', menu)
                 images = final_data['image']
+                for i in final_data['image']:
+                    if op == final_data[i]:
+                        st.sidebar.text('Image:')
+
                 classes = final_data['classes']
                 image_choice = st.sidebar.selectbox('Select image:', images)
                 classes =  final_data["classes"].loc[final_data["image"] == image_choice]
