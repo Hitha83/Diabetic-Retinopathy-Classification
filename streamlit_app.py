@@ -57,12 +57,11 @@ def main():
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
                 class_value = np.argmax(prob)
-                classes.append(class_value[0])
+                classes.append(class_value)
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value))
 
                 new_row = {'image': image_names[0],'classes': classes}
-                #st.write("Diabetic retinopathy image grade is: "+str(class_value))
 
                 a = pd.DataFrame(new_row)
 
@@ -73,18 +72,14 @@ def main():
                     final_df = session_df.append(new_row, ignore_index=True)
                     st.session_state.a = final_df
                     st.write(final_df)
-                    #st.write(final_df)
-                    #st.write('Line_chart')
-                    #st.line_chart(final_df['classes'], width=0, height=0)
-                    #st.write('Barchart')
-                    #st.bar_chart(final_df['classes'])
+                    st.write('Line_chart')
+                    st.line_chart(final_df['classes'], width=0, height=0)
+                    st.write('Barchart')
+                    st.bar_chart(final_df['classes'])
 
     final_data = pd.DataFrame(st.session_state.a)
     st.title('Final DataFrame')
     st.write(final_data)
-    st.write("Line Chart")
-    st.line_chart(final_data['classes'])
-
     st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
     images = final_data['image']
     classes = final_data['classes']
