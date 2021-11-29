@@ -56,7 +56,7 @@ def main():
                 image_names.append(file_uploaded.name)
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
-                class_value = np.argmax(prob)
+                class_value = np.argmax((prob),axis =1)
                 classes.append(class_value)
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value))
@@ -83,7 +83,7 @@ def main():
     st.title('Final DataFrame')
     st.write(final_data)
     st.write("Line Chart")
-    st.line_chart(final_data['classes'].values)
+    st.line_chart(final_data['classes'])
 
     st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
     images = final_data['image']
