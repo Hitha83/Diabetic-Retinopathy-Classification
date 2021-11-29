@@ -80,6 +80,8 @@ def main():
                     #st.bar_chart(final_df['classes'])
 
         final_data = pd.DataFrame(st.session_state.a)
+        st.write(final_data)
+        st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
         images = final_data['image']
         classes = final_data['classes']
         st.write(classes)
@@ -97,8 +99,6 @@ def main():
                     # st.subheader("Image Disease Grades with probability more than 80%")
                     # if st.checkbox("Show Data"):
                     #    st.subheader("Data")
-        st.write(final_data)
-        st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
 
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
