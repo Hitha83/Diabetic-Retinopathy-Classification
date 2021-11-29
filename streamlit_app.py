@@ -57,7 +57,7 @@ def main():
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
                 class_value = np.argmax(prob,axis =1)
-                classes.append(class_value[0])
+                classes.append(class_value)
 
                 new_row = {'image': image_names,'classes': classes}
                 st.success('Classified')
