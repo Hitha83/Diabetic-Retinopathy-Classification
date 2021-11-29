@@ -83,7 +83,7 @@ def main():
     st.title('Final DataFrame')
     st.write(final_data)
     st.write("Line Chart")
-    st.line_chart(final_data)
+    st.line_chart(final_data['classes'].values)
 
     st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
     images = final_data['image']
