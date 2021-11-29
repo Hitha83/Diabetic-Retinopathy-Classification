@@ -87,13 +87,14 @@ def main():
                 st.write('Line_chart')
                 st.line_chart(final_data['classes'],width=0, height=0)
                 st.write('Barchart')
-                st.bar_chart(final_data)
+                st.bar_chart(final_data['classes'])
 
                 #image sidebar
                 images = final_data['image']
                 classes = final_data['classes']
                 image_choice = st.sidebar.selectbox('Select image:', images)
                 if image_choice == 'Select image':
+                    final_data = pd.DataFrame(st.session_state.a)
                     img_class =  final_data["classes"].loc[final_data["image"] == image_choice]
                     st.write(img_class)
 
