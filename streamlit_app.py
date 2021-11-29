@@ -120,10 +120,11 @@ def main():
     st.write(image_choice in images)
     if image_choice in images:
         final_data = pd.DataFrame(st.session_state.a)
-
+        st.write(image_choice)
         img_class = final_data["image"].loc[final_data["classes"] == image_choice]
 
-        st.write(img_class)
+
+        st.write(img_choice)
 
     final_data = pd.DataFrame(st.session_state.a)
     st.title('Final DataFrame')
