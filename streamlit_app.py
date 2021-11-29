@@ -53,7 +53,7 @@ def main():
                 image_names = []
                 prob_scores = []
                 classes = []
-                image_names.append(file_uploaded.name[0])
+                image_names.append(file_uploaded.name)
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
                 class_value = np.argmax(prob)
@@ -61,7 +61,7 @@ def main():
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value))
 
-                new_row = {'image': image_names,'classes': classes}
+                new_row = {'image': image_names[0],'classes': classes}
                 #st.write("Diabetic retinopathy image grade is: "+str(class_value))
 
                 a = pd.DataFrame(new_row)
