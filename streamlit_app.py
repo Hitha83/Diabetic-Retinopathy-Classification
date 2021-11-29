@@ -84,16 +84,12 @@ def main():
                 st.write(final_data)
                 st.markdown(download_csv('predicted Data Frame',final_data),unsafe_allow_html=True)
 
-
-
                 st.write('Line_chart.')
-                #st.line_chart(final_data['classes'],width=0, height=0, use_container_width=True)
+                st.line_chart(final_data,width=0, height=0, use_container_width=True)
                 st.write('Barchart')
-                st.bar_chart(final_data['classes'])
-                final_data['classes'].hist(figsize=(10, 5))
-                st.pyplot()
-                #st.bar_chart(final_data['classes'])
+                st.bar_chart(final_data)
 
+                #image sidebar
                 images = final_data['image']
                 classes = final_data['classes']
                 image_choice = st.sidebar.selectbox('Select image:', images)
