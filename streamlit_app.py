@@ -57,11 +57,11 @@ def main():
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
                 class_value = np.argmax(prob,axis =1)
-                classes.append(class_value[0])
+                classes.append(class_value)
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value[0]))
 
-                new_row = {'image': image_names[0],'classes': classes[0]}
+                new_row = {'image': image_names[0],'classes': classes[0][0]}
 
 
                 a = pd.DataFrame(new_row)
