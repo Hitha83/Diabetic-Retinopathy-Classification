@@ -84,7 +84,7 @@ def main():
         st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
         images = final_data['image']
         classes = final_data['classes']
-        st.write(classes)
+        st.write(images.values)
         st.write(classes.dtype)
         image_choice = st.sidebar.selectbox('Select image:', images)
         st.write(image_choice in images.values)
