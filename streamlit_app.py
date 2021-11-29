@@ -125,7 +125,7 @@ def main():
     st.write(final_data)
     st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
 
-     st.write('Line_chart')
+    st.write('Line_chart')
     st.line_chart(final_data['classes'], width=0, height=0)
     st.write('Barchart')
     st.bar_chart(final_data['classes'])
