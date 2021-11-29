@@ -63,7 +63,7 @@ def main():
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value)
 
-                a = pd.DataFrame(new_row)
+            a = pd.DataFrame(new_row)
 
                 if 'a' not in st.session_state:
                     st.session_state.a = a
