@@ -61,9 +61,11 @@ def main():
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value))
 
-                new_row = {'image': image_names[0],'classes': classes[0]}
+                new_row = {'image': image_names[0],'classes': classes}
+
 
                 a = pd.DataFrame(new_row)
+                st.write(a.classes(type)
 
                 if 'a' not in st.session_state:
                     st.session_state.a = a
