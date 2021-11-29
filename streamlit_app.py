@@ -119,7 +119,7 @@ def main():
         if image_choice in images:
             final_data = pd.DataFrame(st.session_state.a)
 
-            img_class = final_data["classes"].loc[final_data["image"] == image_choice]
+            img_class = final_data["image"].loc[final_data["classes"] == image_choice]
 
             st.write(img_class)
 
@@ -131,12 +131,6 @@ def main():
                     #    st.subheader("Data")
     st.write(final_data)
     st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
-
-    st.write('Line_chart')
-    st.line_chart(final_data['classes'], width=0, height=0)
-    st.write('Barchart')
-    st.bar_chart(final_data['classes'])
-
 
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
