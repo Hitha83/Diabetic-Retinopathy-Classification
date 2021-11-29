@@ -72,7 +72,7 @@ def main():
                     session_df = pd.DataFrame(st.session_state.a)
                     final_df = session_df.append(new_row, ignore_index=True)
                     st.session_state.a = final_df
-                    st.write(final_df['classes'])
+                    st.write(final_df['image'])
                     #st.write(final_df)
                     #st.write('Line_chart')
                     #st.line_chart(final_df['classes'], width=0, height=0)
@@ -112,18 +112,18 @@ def main():
                     # if dataframe_btn:
 
                     # image sidebar
-    final_data = pd.DataFrame(st.session_state.a)
+                final_data = pd.DataFrame(st.session_state.a)
 
-    images = final_data['image']
-    classes = final_data['classes']
-    image_choice = st.sidebar.selectbox('Select image:', images)
-    st.write(image_choice in images)
-    if image_choice in images:
-        final_data = pd.DataFrame(st.session_state.a)
+                images = final_data['image']
+                classes = final_data['classes']
+                image_choice = st.sidebar.selectbox('Select image:', images)
+                st.write(image_choice in images)
+                if image_choice in images:
+                    final_data = pd.DataFrame(st.session_state.a)
 
-        img_class = final_data["image"].loc[final_data["classes"] == image_choice]
+                    img_class = final_data["image"].loc[final_data["classes"] == image_choice]
 
-        st.write(img_class)
+                    st.write(img_class)
 
     final_data = pd.DataFrame(st.session_state.a)
     st.title('Final DataFrame')
