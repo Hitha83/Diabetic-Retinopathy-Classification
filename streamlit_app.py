@@ -121,18 +121,3 @@ def download_csv(name, df):
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
