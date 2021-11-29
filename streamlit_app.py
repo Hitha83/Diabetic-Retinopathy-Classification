@@ -72,11 +72,10 @@ def main():
                     session_df = pd.DataFrame(st.session_state.a)
                     final_df = session_df.append(new_row, ignore_index=True)
                     st.session_state.a = final_df
-                    st.write(final_df)
                     final_df['classes'] = final_df['classes'].astype(int)
-                    st.write(final_df['classes'].dtype)
-                    #st.write('Line_chart')
-                    #st.line_chart(final_df['classes'], width=0, height=0)
+                    st.write(final_df)
+                    st.write('Line_chart')
+                    st.line_chart(final_df['classes'], width=0, height=0)
                     #st.write('Barchart')
                     #st.bar_chart(final_df['classes'])
 
