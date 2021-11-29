@@ -91,7 +91,7 @@ def main():
 
                 #image sidebar
                 #images = final_data['image']
-                classes = final_data['classes']
+                #classes = final_data['classes']
                 #image_choice = st.sidebar.selectbox('Select image:', images)
                 #st.write(image_choice in images)
                 #if image_choice in  images:
