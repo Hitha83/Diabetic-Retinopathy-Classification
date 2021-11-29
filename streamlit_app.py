@@ -115,8 +115,9 @@ def main():
         final_data = pd.DataFrame(st.session_state.a)
 
         images = final_data['image']
-        st.write(images)
         classes = final_data['classes']
+        st.write(classes)
+        st.write(classes.dtype)
         image_choice = st.sidebar.selectbox('Select image:', images)
         st.write(image_choice in images)
         if image_choice in images:
