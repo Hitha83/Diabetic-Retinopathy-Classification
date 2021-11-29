@@ -58,6 +58,7 @@ def main():
                 #prob_scores.append(prob[np.argmax(prob)])
                 class_value = np.argmax(prob)
                 classes.append(class_value)
+                st.write(class_value)
 
                 new_row = {'image': image_names,'classes': classes}
                 st.success('Classified')
