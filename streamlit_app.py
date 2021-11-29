@@ -53,7 +53,7 @@ def main():
                 image_names = []
                 prob_scores = []
                 classes = []
-                image_names.append(file_uploaded.name)
+                image_names.append(file_uploaded.name[0])
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
                 class_value = np.argmax(prob)
@@ -88,7 +88,7 @@ def main():
         st.write(classes.dtype)
         image_choice = st.sidebar.selectbox('Select image:', images)
         st.write(image_choice in images.values)
-        if image_choice in images.values[0]:
+        if image_choice in images.values:
             #final_data = pd.DataFrame(st.session_state.a)
             st.write(image_choice)
             img_class = final_data["classes"].loc[final_data["image"] == image_choice]
