@@ -76,8 +76,8 @@ def main():
                     st.write(final_df)
                     st.write('Line_chart')
                     st.line_chart(final_df['classes'], width=0, height=0)
-                    #st.write('Barchart')
-                    #st.bar_chart(final_df['classes'])
+                    st.write('Barchart')
+                    st.bar_chart(final_df['classes'])
 
     final_data = pd.DataFrame(st.session_state.a)
     st.title('Final DataFrame')
