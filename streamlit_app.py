@@ -79,41 +79,7 @@ def main():
                     #st.write('Barchart')
                     #st.bar_chart(final_df['classes'])
 
-                #dataframe_btn = st.button(" Download Final Dataframe")
-                #if dataframe_btn:
-                #final_data = pd.DataFrame(st.session_state.a)
-                #st.title('Final DataFrame')
-                #final_data['prob>80%'] = final_data[final_data['probability']>8.0]
-                #st.subheader("Image Disease Grades with probability more than 80%")
-                #if st.checkbox("Show Data"):
-                #    st.subheader("Data")
-                #st.write(final_data)
-                #st.markdown(download_csv('predicted Data Frame',final_data),unsafe_allow_html=True)
-
-                #st.write('Line_chart')
-                #st.line_chart(final_data['classes'])
-                #st.write('Barchart')
-                #st.bar_chart(final_data['classes'])
-
-                #image sidebar
-                #images = final_data['image']
-                #classes = final_data['classes']
-                #image_choice = st.sidebar.selectbox('Select image:', images)
-                #st.write(image_choice in images)
-                #if image_choice in  images:
-
-                   # final_data = pd.DataFrame(st.session_state.a)
-
-                    #img_class =  final_data["classes"].loc[final_data["image"] == image_choice]
-
-                    #st.write(img_class)
-
-    # dataframe_btn = st.button(" Download Final Dataframe")
-                    # if dataframe_btn:
-
-                    # image sidebar
         final_data = pd.DataFrame(st.session_state.a)
-
         images = final_data['image']
         classes = final_data['classes']
         st.write(classes)
@@ -121,18 +87,18 @@ def main():
         image_choice = st.sidebar.selectbox('Select image:', images)
         st.write(image_choice in images.values)
         if image_choice in images.values:
-            final_data = pd.DataFrame(st.session_state.a)
+            #final_data = pd.DataFrame(st.session_state.a)
             st.write(image_choice)
             img_class = final_data["classes"].loc[final_data["image"] == image_choice]
             st.write(img_class)
 
-    st.title('Final DataFrame')
+        st.title('Final DataFrame')
                     # final_data['prob>80%'] = final_data[final_data['probability']>8.0]
                     # st.subheader("Image Disease Grades with probability more than 80%")
                     # if st.checkbox("Show Data"):
                     #    st.subheader("Data")
-    st.write(final_data)
-    st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
+        st.write(final_data)
+        st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
 
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
