@@ -72,7 +72,7 @@ def main():
                     session_df = pd.DataFrame(st.session_state.a)
                     final_df = session_df.append(new_row, ignore_index=True)
                     st.session_state.a = final_df
-                    st.write(final_df['image'])
+                    st.write(final_df)
                     #st.write(final_df)
                     #st.write('Line_chart')
                     #st.line_chart(final_df['classes'], width=0, height=0)
@@ -125,7 +125,7 @@ def main():
             img_class = final_data["image"].loc[final_data["classes"] == image_choice]
 
 
-        st.write(img_choice)
+            st.write(img_choice)
 
     final_data = pd.DataFrame(st.session_state.a)
     st.title('Final DataFrame')
