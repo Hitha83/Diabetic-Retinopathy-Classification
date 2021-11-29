@@ -56,7 +56,7 @@ def main():
                 image_names.append(file_uploaded.name)
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
-                class_value = np.argmax(prob,axis =1)
+                class_value = np.argmax(prob)
                 classes.append(class_value)
 
                 new_row = {'image': image_names,'classes': classes}
