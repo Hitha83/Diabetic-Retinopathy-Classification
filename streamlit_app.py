@@ -86,7 +86,7 @@ def main():
     st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
     images = final_data['image']
     classes = final_data['classes']
-    image_choice = st.sidebar.selectbox('Select image:', images)
+    image_choice = st.sidebar.selectbox('Select image:', set(images))
 
     if image_choice in images.values:
 
