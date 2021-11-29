@@ -88,7 +88,7 @@ def main():
         st.write(classes.dtype)
         image_choice = st.sidebar.selectbox('Select image:', images)
         st.write(image_choice in images.values)
-        if image_choice in images.values:
+        if image_choice in images.values[0]:
             #final_data = pd.DataFrame(st.session_state.a)
             st.write(image_choice)
             img_class = final_data["classes"].loc[final_data["image"] == image_choice]
