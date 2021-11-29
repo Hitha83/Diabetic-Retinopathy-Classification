@@ -56,8 +56,8 @@ def main():
                 image_names.append(file_uploaded.name)
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
-                class_value = np.argmax((prob),axis =1)
-                classes.append(class_value)
+                class_value = np.argmax(prob)
+                classes.append(class_value[0])
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value))
 
