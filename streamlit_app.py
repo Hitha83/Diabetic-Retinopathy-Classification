@@ -89,8 +89,8 @@ def main():
                 st.write('Line_chart.')
                 #st.line_chart(final_data['classes'],width=0, height=0, use_container_width=True)
                 st.write('Barchart')
-                st.bar_chart(final_df['classes'])
-                final_df['classes'].hist(figsize=(10, 5))
+                st.bar_chart(final_data['classes'])
+                final_data['classes'].hist(figsize=(10, 5))
                 st.pyplot()
                 #st.bar_chart(final_data['classes'])
 
