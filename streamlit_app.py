@@ -76,13 +76,13 @@ def main():
                 #dataframe_btn = st.button(" Download Final Dataframe")
                 #if dataframe_btn:
                 final_data = pd.DataFrame(st.session_state.a)
-                st.title('Final DataFrame')
+                #st.title('Final DataFrame')
                 #final_data['prob>80%'] = final_data[final_data['probability']>8.0]
                 #st.subheader("Image Disease Grades with probability more than 80%")
                 #if st.checkbox("Show Data"):
                 #    st.subheader("Data")
-                st.write(final_data)
-                st.markdown(download_csv('predicted Data Frame',final_data),unsafe_allow_html=True)
+                #st.write(final_data)
+                #st.markdown(download_csv('predicted Data Frame',final_data),unsafe_allow_html=True)
 
                 st.write('Line_chart')
                 st.line_chart(final_data['classes'],width=0, height=0)
