@@ -79,20 +79,20 @@ def main():
                     #st.write('Barchart')
                     #st.bar_chart(final_df['classes'])
 
-        final_data = pd.DataFrame(st.session_state.a)
-        st.write(final_data)
-        st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
-        images = final_data['image']
-        classes = final_data['classes']
-        st.write(images.values)
-        st.write(classes.dtype)
-        image_choice = st.sidebar.selectbox('Select image:', images)
-        st.write(image_choice in images.values)
-        if image_choice in images.values:
+    final_data = pd.DataFrame(st.session_state.a)
+    st.write(final_data)
+    st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
+    images = final_data['image']
+    classes = final_data['classes']
+    st.write(images.values)
+    st.write(classes.dtype)
+    image_choice = st.sidebar.selectbox('Select image:', images)
+    st.write(image_choice in images.values)
+    if image_choice in images.values:
             #final_data = pd.DataFrame(st.session_state.a)
-            st.write(image_choice)
-            img_class = final_data["classes"].loc[final_data["image"] == image_choice]
-            st.write(img_class)
+        st.write(image_choice)
+        img_class = final_data["classes"].loc[final_data["image"] == image_choice]
+        st.write(img_class)
 
         st.title('Final DataFrame')
                     # final_data['prob>80%'] = final_data[final_data['probability']>8.0]
