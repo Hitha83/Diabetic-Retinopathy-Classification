@@ -119,7 +119,7 @@ def main():
         st.write(classes)
         st.write(classes.dtype)
         image_choice = st.sidebar.selectbox('Select image:', images)
-        st.write(image_choice in images)
+        st.write(image_choice in images.values)
         if image_choice in images.values:
             final_data = pd.DataFrame(st.session_state.a)
             st.write(image_choice)
