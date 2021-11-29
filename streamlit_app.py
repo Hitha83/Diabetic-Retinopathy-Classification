@@ -115,6 +115,7 @@ def main():
     final_data = pd.DataFrame(st.session_state.a)
 
     images = final_data['image']
+    st.write(dtype(images))
     classes = final_data['classes']
     image_choice = st.sidebar.selectbox('Select image:', images)
     st.write(image_choice in images)
