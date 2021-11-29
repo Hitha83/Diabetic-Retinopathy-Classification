@@ -61,7 +61,7 @@ def main():
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value))
 
-                new_row = {'image': image_names,'classes': classes}
+                new_row = {'image': image_names,'classes': classes[0]}
 
 
                 a = pd.DataFrame(new_row)
