@@ -75,7 +75,7 @@ def main():
 
                 #dataframe_btn = st.button(" Download Final Dataframe")
                 #if dataframe_btn:
-                final_data = pd.DataFrame(st.session_state.a)
+                #final_data = pd.DataFrame(st.session_state.a)
                 #st.title('Final DataFrame')
                 #final_data['prob>80%'] = final_data[final_data['probability']>8.0]
                 #st.subheader("Image Disease Grades with probability more than 80%")
@@ -106,6 +106,8 @@ def main():
                     # if dataframe_btn:
     else:
                     # image sidebar
+        final_data = pd.DataFrame(st.session_state.a)
+
         images = final_data['image']
         classes = final_data['classes']
         image_choice = st.sidebar.selectbox('Select image:', images)
@@ -116,6 +118,7 @@ def main():
             img_class = final_data["classes"].loc[final_data["image"] == image_choice]
 
             st.write(img_class)
+
     final_data = pd.DataFrame(st.session_state.a)
     st.title('Final DataFrame')
                     # final_data['prob>80%'] = final_data[final_data['probability']>8.0]
