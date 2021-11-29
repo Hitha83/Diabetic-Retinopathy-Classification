@@ -126,8 +126,6 @@ def main():
             img_class = final_data["classes"].loc[final_data["image"] == image_choice]
             st.write(img_class)
 
-
-    final_data = pd.DataFrame(st.session_state.a)
     st.title('Final DataFrame')
                     # final_data['prob>80%'] = final_data[final_data['probability']>8.0]
                     # st.subheader("Image Disease Grades with probability more than 80%")
