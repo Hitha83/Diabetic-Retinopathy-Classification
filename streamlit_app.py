@@ -56,16 +56,15 @@ def main():
                 image_names.append(file_uploaded.name)
                 prob = import_and_predict(image)
                 #prob_scores.append(prob[np.argmax(prob)])
-                class_value = np.argmax(prob)
+                class_value = np.argmax(prob,axis =1)
                 classes.append(class_value)
                 st.success('Classified')
                 st.write("Diabetic retinopathy image grade is: "+str(class_value))
 
-                new_row = {'image': image_names[0],'classes': classes}
+                new_row = {'image': image_names,'classes': classes}
 
 
                 a = pd.DataFrame(new_row)
-                st.write(a.classes(type)
 
                 if 'a' not in st.session_state:
                     st.session_state.a = a
