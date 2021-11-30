@@ -87,8 +87,10 @@ def main():
         st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
 
         # get count of each type
-        class_count = pd.DataFrame(final_data['classes'].value_counts()).reset_index(inplace=True).rename(columns={'classes': 'Num_Values'},)
-        #class#count.reset_index(inplace=True)
+        class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'},)
+        class_count.reset_index(inplace=True)
+        class_count = class_count.rename(columns={'index': 'class'})
+
         #class_count.set_index('index', drop=False, inplace=True)
         st.write(class_count)
         plt.figure(figsize=(15, 6))
