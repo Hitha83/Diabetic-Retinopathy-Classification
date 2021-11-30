@@ -3,7 +3,7 @@
 numpy==1.19.2
 #streamlit==0.79.0
 opencv-python-headless
-altair
+#altair
 streamlit==0.84.2
 tensorflow>=1.3.0
 keras
