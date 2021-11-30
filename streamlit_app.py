@@ -89,7 +89,6 @@ def main():
         # get count of each type
         class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
         class_count.reset_index(level=0, inplace=True)
-        #class_count = class_count.rename(columns={'index': 'class'})
         st.write(class_count)
 
         #plt.figure(figsize=(15, 6))
