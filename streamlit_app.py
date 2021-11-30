@@ -87,7 +87,7 @@ def main():
         st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
 
         # get count of each type
-        class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'},)
+        class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
         class_count.reset_index(inplace=True)
         class_count = class_count.rename(columns={'index': 'class'})
 
@@ -105,14 +105,14 @@ def main():
             #size=alt.value(2))
 
         #(chart + chart_rule).interactive()
-        chart = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = 'Num_Values',y ='class',)
+        bar = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = 'Num_Values',y ='class')
         #color = alt.Color('color:N', scale=None)
-        text = chart.mark_text(align='left',baseline='middle',dx=3).encode(text='Num_values')
+        text = bar.mark_text(align='left',baseline='middle',dx=3).encode(text='Num_values')
         # Nudges text to right so it doesn't appear on top of the bar
-        (chart + text).properties(height=900)
+        (bar + text).properties(height=900)
         #st.altair_chart(chart, use_container_width=True)
         #st.title('Diabetic Retinopathy Class Distribution')
-        
+
         images = final_data['image']
         classes = final_data['classes']
         image_choice = st.sidebar.selectbox('Select image:', images)
