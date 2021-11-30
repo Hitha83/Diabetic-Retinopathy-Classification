@@ -92,7 +92,7 @@ def main():
         plt.figure(figsize=(15, 6))
         #st.bar_chart(class_count['Num_Values'], width=0, height=0, use_container_width=False)
         base = alt.Chart(class_count,
-                         title='Diabetic Retinopathy Class Distribution
+                         title='Diabetic Retinopathy Class Distribution'
                          ).properties(width=300)
         #chart = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = class_count['Num_Values'],color = 'color')
         color = alt.Color('color:N', scale=None)
