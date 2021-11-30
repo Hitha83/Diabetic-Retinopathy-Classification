@@ -84,6 +84,11 @@ def main():
         st.title('Final DataFrame')
         st.write(final_data)
         st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
+
+        # get count of each type
+        class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
+        st.write(class_count)
+
         images = final_data['image']
         classes = final_data['classes']
         image_choice = st.sidebar.selectbox('Select image:', images)
