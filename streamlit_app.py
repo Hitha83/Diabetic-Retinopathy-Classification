@@ -88,8 +88,8 @@ def main():
 
         # get count of each type
         class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'},)
-        #class_count.reset_index(inplace=True)
-        class_count.set_index('index', drop=False, inplace=True)
+        class_count.reset_index(inplace=True)
+        #class_count.set_index('index', drop=False, inplace=True)
         st.write(class_count)
         plt.figure(figsize=(15, 6))
         #st.bar_chart(class_count['Num_Values'], width=0, height=0, use_container_width=False)
