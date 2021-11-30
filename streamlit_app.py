@@ -87,22 +87,22 @@ def main():
         st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
 
         # get count of each type
-        class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
+        class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'},)
+        class_count.reset_index(inplace=True)
+        class_count.set_index('index', drop=False, inplace=True)
         st.write(class_count)
         plt.figure(figsize=(15, 6))
         #st.bar_chart(class_count['Num_Values'], width=0, height=0, use_container_width=False)
-        base = alt.Chart(class_count,
-                         title='Diabetic Retinopathy Class Distribution'
-                         ).properties(width=300)
-        chart = base.mark_bar(opacity=0.7).encode( alt.X('Num_values', title='False Positive Rate (FPR)',  sort=None),
-        alt.Y(class_count.index.to_list()), title='True Positive Rate (TPR)')
-        chart_rule = base.mark_bar(color='green').encode(
-            x='Num_values',
-            y=class_count.index.to_list(),
-            size=alt.value(2)
-        )
+        #base = alt.Chart(class_count,
+        #title='Diabetic Retinopathy Class Distribution').properties(width=300)
+        #chart = base.mark_bar(opacity=0.7).encode( alt.X('Num_values', title='False Positive Rate (FPR)',  sort=None),
+        #alt.Y(class_count.index.to_list()), title='True Positive Rate (TPR)')
+        #chart_rule = base.mark_bar(color='green').encode(
+            #x='Num_values',
+            #y=class_count.index.to_list(),
+            #size=alt.value(2))
 
-        (chart + chart_rule).interactive()
+        #(chart + chart_rule).interactive()
         #chart = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = class_count['Num_Values'],color = 'color')
         #color = alt.Color('color:N', scale=None)
         #st.altair_chart(chart, use_container_width=True)
