@@ -92,6 +92,20 @@ def main():
                 img_class = final_data["classes"].loc[final_data["image"] == image_choice]
                 st.write(img_class)
 
+                # get count of each type
+            class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
+            class_count = class_count.rename_axis('class').reset_index()
+            st.write(class_count)
+
+                # (chart + chart_rule).interactive()
+            bar = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x='Num_Values', y='class')
+            # color = alt.Color('color:N', scale=None)
+            text = bar.mark_text(align='left', baseline='middle', dx=3).encode(text='Num_values')
+            # Nudges text to right so it doesn't appear on top of the bar
+            (bar + text).properties(height=900)
+            #st.altair_chart(chart, use_container_width=True)
+             # st.title('Diabetic Retinopathy Class Distribution')
+
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
     image = np.array(image)
