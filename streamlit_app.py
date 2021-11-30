@@ -88,8 +88,8 @@ def main():
 
         # get count of each type
         class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
-        st.write(class_count)
         class_count = class_count.reset_index(inplace=True)
+        st.write(class_count)
         #class_count = class_count.rename(columns={'index': 'class'})
         #st.write(class_count)
 
