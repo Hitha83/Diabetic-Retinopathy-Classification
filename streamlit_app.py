@@ -95,8 +95,7 @@ def main():
                          title='Diabetic Retinopathy Class Distribution'
                          ).properties(width=300)
         chart = base.mark_bar(opacity=0.7).encode( alt.X('Num_values', title='False Positive Rate (FPR)',  sort=None),
-     alt.Y( class_count.index.to_list()), title='True Positive Rate (TPR)'),
-)
+     alt.Y( class_count.index.to_list()), title='True Positive Rate (TPR)'),)
         #chart = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = class_count['Num_Values'],color = 'color')
         #color = alt.Color('color:N', scale=None)
         #st.altair_chart(chart, use_container_width=True)
