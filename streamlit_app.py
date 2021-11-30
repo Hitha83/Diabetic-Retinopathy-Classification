@@ -89,7 +89,7 @@ def main():
         class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
         st.write(class_count)
         plt.figure(figsize=(15, 6))
-        st.bar_chart(class_count['Num_Values'])
+        st.bar_chart(class_count['Num_Values'], width=0, height=0, use_container_width=True)
         st.title('Diabetic Retinopathy Class Distribution')
 
         images = final_data['image']
