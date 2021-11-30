@@ -78,24 +78,24 @@ def main():
                     st.write('Barchart')
                     st.bar_chart(final_df['classes'])
 
-    if 'a' in st.session_state:
-        final_data = pd.DataFrame(st.session_state.a)
-        st.title('Final DataFrame')
-        st.write(final_data)
-        st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
-        # get count of each type
-        class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
-        class_count = class_count.rename_axis('class').reset_index()
-        st.write(class_count)
+        if 'a' in st.session_state:
+            final_data = pd.DataFrame(st.session_state.a)
+            st.title('Final DataFrame')
+            st.write(final_data)
+            st.markdown(download_csv('predicted Data Frame', final_data), unsafe_allow_html=True)
+            # get count of each type
+            class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
+            class_count = class_count.rename_axis('class').reset_index()
+            st.write(class_count)
 
-        #(chart + chart_rule).interactive()
-        bar = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = 'Num_Values',y ='class')
-        #color = alt.Color('color:N', scale=None)
-        text = bar.mark_text(align='left',baseline='middle',dx=3).encode(text='Num_values')
-        # Nudges text to right so it doesn't appear on top of the bar
-        (bar + text).properties(height=900)
-        #st.altair_chart(chart, use_container_width=True)
-        #st.title('Diabetic Retinopathy Class Distribution')
+            #(chart + chart_rule).interactive()
+            bar = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = 'Num_Values',y ='class')
+            #color = alt.Color('color:N', scale=None)
+            text = bar.mark_text(align='left',baseline='middle',dx=3).encode(text='Num_values')
+            # Nudges text to right so it doesn't appear on top of the bar
+            (bar + text).properties(height=900)
+            #   st.altair_chart(chart, use_container_width=True)
+            #st.title('Diabetic Retinopathy Class Distribution')
 
         images = final_data['image']
         classes = final_data['classes']
