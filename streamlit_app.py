@@ -88,6 +88,9 @@ def main():
         # get count of each type
         class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
         st.write(class_count)
+        plt.figure(figsize=(15, 6))
+        st.bar_chart(x=class_count['Num_Values'], y=class_count.index.to_list())
+        st.title('Diabetic Retinopathy Class Distribution')
 
         images = final_data['image']
         classes = final_data['classes']
