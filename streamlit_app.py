@@ -106,6 +106,7 @@ def main():
             st.altair_chart(bar, use_container_width=True)
             st.title('Diabetic Retinopathy Class Distribution')
 
+
 def import_and_predict(image):
     model = classifier_model = tf.keras.models.load_model('DR3000-60.h5')
     image = np.array(image)
