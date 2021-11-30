@@ -112,7 +112,7 @@ def main():
         (chart + text).properties(height=900)
         #st.altair_chart(chart, use_container_width=True)
         #st.title('Diabetic Retinopathy Class Distribution')
-
+        
         images = final_data['image']
         classes = final_data['classes']
         image_choice = st.sidebar.selectbox('Select image:', images)
