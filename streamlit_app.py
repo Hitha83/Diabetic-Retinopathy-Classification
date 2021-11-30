@@ -4,6 +4,7 @@ import streamlit as st
 import tensorflow as tf
 import pandas as pd
 import base64
+import altair as alt
 # Packages required for Image Classification
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -89,7 +90,10 @@ def main():
         class_count = pd.DataFrame(final_data['classes'].value_counts()).rename(columns={'classes': 'Num_Values'})
         st.write(class_count)
         plt.figure(figsize=(15, 6))
-        st.bar_chart(class_count['Num_Values'], width=0, height=0, use_container_width=True)
+        #st.bar_chart(class_count['Num_Values'], width=0, height=0, use_container_width=False)
+        chart = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = class_count['Num_Values'],color = 'color')
+        color = alt.Color('color:N', scale=None)
+        st.altair_chart(chart, use_container_width=True)
         st.title('Diabetic Retinopathy Class Distribution')
 
         images = final_data['image']
