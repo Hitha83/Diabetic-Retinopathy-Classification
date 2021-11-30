@@ -93,7 +93,7 @@ def main():
 
         #class_count.set_index('index', drop=False, inplace=True)
         st.write(class_count)
-        plt.figure(figsize=(15, 6))
+        #plt.figure(figsize=(15, 6))
         #st.bar_chart(class_count['Num_Values'], width=0, height=0, use_container_width=False)
         #base = alt.Chart(class_count,
         #title='Diabetic Retinopathy Class Distribution').properties(width=300)
@@ -105,8 +105,11 @@ def main():
             #size=alt.value(2))
 
         #(chart + chart_rule).interactive()
-        #chart = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = class_count['Num_Values'],color = 'color')
+        chart = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x = 'Num_Values',y ='class',)
         #color = alt.Color('color:N', scale=None)
+        text = chart.mark_text(align='left',baseline='middle',dx=3).encode(text='Num_values')
+        # Nudges text to right so it doesn't appear on top of the bar
+        (chart + text).properties(height=900)
         #st.altair_chart(chart, use_container_width=True)
         #st.title('Diabetic Retinopathy Class Distribution')
 
