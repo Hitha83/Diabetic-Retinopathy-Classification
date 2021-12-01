@@ -99,7 +99,7 @@ def main():
 
                 # (chart + chart_rule).interactive()
             bar = alt.Chart(class_count).mark_bar(opacity=0.7).encode(x='Num_Values', y='class')
-            # color = alt.Color('color:N', scale=None)
+            color = alt.Color('color:N', scale=None)
             #text = bar.mark_text(align='left', baseline='middle', dx=3).encode(text='Num_values')
             # Nudges text to right so it doesn't appear on top of the bar
             (bar + text).properties(height=900)
